@@ -1,0 +1,58 @@
+{
+  "id": "20261023-magento-canonical-categoriepad",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Magento: dubbele product-URL's door het categoriepad",
+  "matrix": [
+    "5.1.7"
+  ],
+  "titel": "Eén rugzak, drie URL's: welke Magento-instelling pak je eerst aan?",
+  "intro": "In een Magento 2-webshop (Adobe Commerce) staat 'Use Categories Path for Product URLs' aan. Daardoor is dezelfde rugzak bereikbaar via /tassen/rugzak-x.html, /sale/rugzak-x.html en /rugzak-x.html. Search Console toont de sale-URL als de canonieke versie die Google koos. De sale stopt over twee weken, en dan verdwijnt die categorie.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welke aanpassing adviseer je als eerste?",
+    "opties": [
+      "Zet 'Use Canonical Link Meta Tag For Products' aan, zodat elke productpagina naar de korte product-URL wijst.",
+      "Zet in robots.txt een Disallow op /sale/, zodat Google de productpagina's met dat pad niet meer crawlt en indexeert.",
+      "Maak in URL Rewrites voor elke product-URL met een categoriepad een 302-redirect naar de URL zonder categoriepad.",
+      "Zet de sale-categoriepagina op noindex, zodat Google de producten in die categorie niet meer als canonical kiest."
+    ],
+    "juist": 0
+  },
+  "kern": "Laat elke productpagina zelf naar het korte adres zonder categorie wijzen, dan blijft Google niet hangen aan een tijdelijk sale-pad.",
+  "afleiders": [
+    "",
+    "**Disallow op /sale/:** zo lijkt Google de sale-URL's te laten liggen. Maar dan ziet Google de canonical op die pagina's niet, en kan het de URL's toch zonder inhoud indexeren.",
+    "**302-redirects:** doorsturen klinkt grondig. Maar een 302 is een tijdelijke redirect, en duizenden losse rewrites zijn foutgevoelig.",
+    "**noindex op de sale-categorie:** dat raakt alleen de categoriepagina zelf. De product-URL's met /sale/ erin blijven gewoon bestaan."
+  ],
+  "kort": "Stel: een kennis heeft drie postadressen, en jij gebruikt toevallig dat van een vakantiehuisje dat hij over twee weken verkoopt. Dan raakt je post straks zoek. Daarom spreek je één vast adres af dat altijd blijft. De canonical in Magento werkt zo: elke productpagina noemt zelf het korte adres. Dat kan, omdat de URL-key van een product uniek is in de hele winkel.",
+  "begrippen": [
+    {
+      "term": "Canonical",
+      "uitleg": "een tag die zegt welke versie van een pagina de hoofdversie is."
+    },
+    {
+      "term": "Categoriepad",
+      "uitleg": "het stuk van de URL met de categorie, zoals /tassen/ in /tassen/rugzak-x.html."
+    },
+    {
+      "term": "URL-key",
+      "uitleg": "het vaste, unieke stuk van een product-URL in Magento, zoals rugzak-x."
+    },
+    {
+      "term": "302-redirect",
+      "uitleg": "een tijdelijke doorverwijzing naar een ander adres."
+    }
+  ],
+  "uitleg": "Staat **Use Categories Path for Product URLs** aan, dan krijgt een product in drie categorieën al snel drie of meer URL's. Adobe waarschuwt zelf dat dit dubbele URL's kan opleveren. Met **Use Canonical Link Meta Tag For Products** krijgt elke productpagina een canonical naar domein/product-url-key, ook als het categoriepad in de URL blijft staan.\n\nDe instellingen staan onder Stores → Settings → Configuration → Catalog → Catalog → Search Engine Optimization. Haal eerst het vinkje 'Use system value' weg voordat je iets wijzigt.\n\nDe aanpak in drie stappen:\n- **Canonical aanzetten** voor producten en categorieën, zoals Adobe aanraadt.\n- **Interne links gelijktrekken.** Een canonical is een sterk signaal, geen bevel. Linken menu, sitemap en categoriepagina's naar een andere variant, dan kan Google toch een andere URL kiezen. Overweeg daarom ook het categoriepad uit te zetten, zodat alleen nog de korte URL's worden gelinkt.\n- **Controleren.** Kijk na een paar weken met de URL-inspectie welke canonical Google kiest.",
+  "kernpunt": "Kiest Google een andere canonical dan jij wilt, kijk dan eerst waar je eigen menu, sitemap en categoriepagina's naartoe linken.",
+  "toepassing": "Open vandaag bij een Magento-klant een product dat in meerdere categorieën zit. Kijk in de broncode welke canonical er staat en of het menu naar dezelfde URL linkt.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Meta data | Adobe Commerce (Experience League)",
+    "url": "https://experienceleague.adobe.com/en/docs/commerce-admin/marketing/seo/meta-data"
+  }
+}

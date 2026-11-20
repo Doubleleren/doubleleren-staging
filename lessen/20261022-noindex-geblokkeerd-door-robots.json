@@ -1,0 +1,59 @@
+{
+  "id": "20261022-noindex-geblokkeerd-door-robots",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "noindex en robots.txt: waarom ze elkaar in de weg zitten",
+  "matrix": [
+    "1.3.1",
+    "1.3.6"
+  ],
+  "titel": "noindex én Disallow, en de pagina's staan nog steeds in Google",
+  "intro": "Een webshop wil de interne zoekresultaatpagina's (/zoeken?q=...) uit Google houden. De developer heeft twee dingen gedaan: een meta robots-tag met noindex op die pagina's gezet, en 'Disallow: /zoeken' in robots.txt. Drie weken later staan er nog steeds zoekpagina's in Google.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de beste volgende stap?",
+    "opties": [
+      "Ook een X-Robots-Tag met noindex in de HTTP-header toevoegen, zodat Google de instructie dubbel krijgt.",
+      "Een canonical van alle zoekpagina's naar de homepage zetten, zodat Google ze samenvoegt.",
+      "De Disallow-regel voor /zoeken weghalen, zodat Googlebot de pagina's weer kan ophalen.",
+      "Niets doen: noindex en Disallow samen werken altijd, het duurt alleen wat langer."
+    ],
+    "juist": 2
+  },
+  "kern": "Google moet een pagina mogen ophalen om de noindex te kunnen lezen, en de Disallow houdt Google daar juist weg.",
+  "afleiders": [
+    "**X-Robots-Tag erbij:** dubbel lijkt sterker. Maar ook een header leest Google alleen als het de URL mag ophalen, en dat verbiedt de Disallow nog steeds.",
+    "**Canonical naar de homepage:** de zoekpagina's zijn geen kopie van de homepage, dus het signaal klopt niet. En zolang de URL geblokkeerd is, leest Google ook die canonical niet.",
+    "",
+    "**Niets doen:** het lijkt een kwestie van geduld. Maar zolang de blokkade er staat, ziet Google de noindex nooit, hoe lang je ook wacht."
+  ],
+  "kort": "Je hangt een briefje op je voordeur: 'niet opnemen in de telefoongids'. Maar je zet ook een hek om de tuin. De man van de gids komt niet bij de deur en leest het briefje dus nooit. Je adres kent hij wel via de buren, dus je komt er toch in. Haal het hek weg, dan leest hij het briefje en laat hij je weg.",
+  "begrippen": [
+    {
+      "term": "noindex",
+      "uitleg": "een instructie op de pagina: neem deze pagina niet op in de zoekresultaten."
+    },
+    {
+      "term": "robots.txt",
+      "uitleg": "een bestand op de site dat crawlers vertelt welke adressen ze niet mogen ophalen."
+    },
+    {
+      "term": "Disallow",
+      "uitleg": "de regel in robots.txt die een crawler verbiedt een adres op te halen."
+    },
+    {
+      "term": "X-Robots-Tag",
+      "uitleg": "dezelfde instructie als meta robots, maar meegestuurd in de HTTP-header van de server in plaats van in de HTML."
+    }
+  ],
+  "uitleg": "robots.txt en noindex sturen twee verschillende stappen:\n\n- **robots.txt** stuurt het **crawlen**: mag Googlebot een URL ophalen?\n- **noindex** (meta robots of X-Robots-Tag) stuurt het **indexeren**: mag de pagina in de zoekresultaten?\n\nGoogle schrijft het letterlijk in de documentatie: een noindex werkt alleen als de pagina **niet** geblokkeerd is door robots.txt. Een geblokkeerde URL kan in Google blijven staan als er links naar wijzen. Hij staat er dan vaak zonder beschrijving, omdat Google de inhoud niet heeft gelezen.\n\nDe juiste volgorde bij pagina's die uit de index moeten:\n- Zet noindex op de pagina's en laat crawlen toe.\n- Controleer met de URL-inspectietool en het rapport Pagina-indexering of de URL's als 'Uitgesloten door noindex-tag' verschijnen.\n- Wil je daarna crawlbudget besparen met een Disallow, weeg dat dan af. Gelinkte URL's kunnen dan weer zonder inhoud in de index komen.\n\nMoeten URL's snel tijdelijk onzichtbaar zijn, gebruik dan de tool Verwijderingen in Search Console.",
+  "kernpunt": "Moet een pagina uit Google, kijk dan eerst of robots.txt hem blokkeert, en pas daarna naar de noindex.",
+  "toepassing": "Zoek vandaag bij een klant in het rapport Pagina-indexering naar 'Geïndexeerd, hoewel geblokkeerd door robots.txt'. Kijk bij één patroon of er een noindex op staat die Google niet kan lezen.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Block Search indexing with noindex | Google Search Central",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing"
+  }
+}

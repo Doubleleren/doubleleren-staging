@@ -1,0 +1,46 @@
+{
+  "id": "20261104-perplexity-bots-robots-txt",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO / AI-search",
+  "onderwerp": "Perplexity-crawlers: PerplexityBot en Perplexity-User",
+  "matrix": [
+    "12.1.3",
+    "12.1.6"
+  ],
+  "titel": "PerplexityBot geblokkeerd, toch Perplexity in de logs",
+  "intro": "Een klant wil als bron in Perplexity verschijnen, maar wil niet dat Perplexity 'zomaar alles leest'. De developer heeft daarom in robots.txt gezet: User-agent: PerplexityBot met Disallow: /. Een week later zie je in de serverlogs nog steeds verzoeken van Perplexity-User. De klant vraagt of Perplexity zich niet aan de regels houdt.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is er aan de hand, en wat betekent de blokkade voor de zichtbaarheid in Perplexity?",
+    "opties": [
+      "Perplexity-User is de trainingscrawler en moet je apart blokkeren; de blokkade van PerplexityBot heeft verder geen gevolgen.",
+      "Perplexity-User is een nepbot die zich als Perplexity voordoet; blokkeer hem op IP-adres, dan blijft je zichtbaarheid gelijk.",
+      "Perplexity-User haalt op voor een vraag van een gebruiker en volgt robots.txt dan meestal niet; de blokkade kost zichtbaarheid.",
+      "Perplexity leest robots.txt pas na dertig dagen opnieuw; wacht dus af, dan stoppen beide bots en blijf je gewoon zichtbaar."
+    ],
+    "juist": 2
+  },
+  "kern": "Perplexity-User komt langs omdat een mens iets vroeg. De geblokkeerde PerplexityBot was juist de bot die de klant als bron laat vinden.",
+  "afleiders": [
+    "**Trainingscrawler:** het lijkt logisch dat er een aparte bot voor training is. Maar volgens Perplexity wordt geen van beide gebruikt om AI-modellen te trainen.",
+    "**Nepbot:** dat kan, en alert zijn is goed. Maar controleer het eerst met de IP-lijsten die Perplexity publiceert. En de blokkade van PerplexityBot kost hoe dan ook zichtbaarheid.",
+    "",
+    "**Dertig dagen wachten:** het klinkt alsof robots.txt tijd nodig heeft. Maar er is geen wachttijd die de blokkade ongedaan maakt, en Perplexity-User volgt robots.txt meestal niet."
+  ],
+  "kort": "Denk aan een reisgids en een koerier. De schrijver van de gids bezoekt je zaak om je erin op te nemen. De koerier komt iets ophalen omdat een klant erom vroeg. Weiger je de gidsschrijver, dan sta je niet in de gids, terwijl de koerier gewoon blijft komen. Zo werken de twee bots van Perplexity ook, en daarom kost deze blokkade de klant juist zichtbaarheid.",
+  "begrippen": [
+    { "term": "robots.txt", "uitleg": "een tekstbestand op je site waarin je bots vertelt welke delen ze niet mogen bezoeken." },
+    { "term": "User-agent", "uitleg": "de naam waarmee een bot zich bij je server meldt, zoals PerplexityBot." },
+    { "term": "Serverlogs", "uitleg": "de lijst waarin je server elk bezoek bijhoudt, ook dat van bots." }
+  ],
+  "uitleg": "AI-zoekmachines gebruiken vaak meerdere bots met elk een eigen taak. Bij Perplexity:\n- **PerplexityBot:** om websites te tonen en te linken in de zoekresultaten. Perplexity raadt aan hem toe te laten.\n- **Perplexity-User:** voor acties van gebruikers. Hij bezoekt een pagina om een vraag te beantwoorden en kan ernaar linken. Omdat een gebruiker erom vroeg, negeert hij robots.txt meestal.\n\nWat betekent dat voor je advies?\n- Wil een klant **als bron verschijnen**, laat PerplexityBot dan toe.\n- Wil een klant inhoud **echt afschermen**, dan helpt robots.txt niet tegen Perplexity-User. Dan heb je een login of een firewallregel nodig. Maar dan verdwijn je ook als bron.\n- Twijfel je of een bezoek echt van Perplexity komt, vergelijk dan het IP-adres met de lijsten die Perplexity publiceert. Kijk naar user-agent én IP.\n\nControleer bij elke AI-zoekmachine in de documentatie welke bot wat doet.",
+  "kernpunt": "Wil een klant als bron in een AI-zoekmachine verschijnen, blokkeer dan nooit de bot die de zoekresultaten vult.",
+  "toepassing": "Kijk vandaag in de robots.txt van één klant welke AI-bots geblokkeerd zijn. Check per bot in de documentatie of dat de klant zichtbaarheid kost.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Perplexity Crawlers - Perplexity Docs",
+    "url": "https://docs.perplexity.ai/guides/bots"
+  }
+}

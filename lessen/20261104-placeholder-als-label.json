@@ -1,0 +1,46 @@
+{
+  "id": "20261104-placeholder-als-label",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "CRO",
+  "onderwerp": "Formulieren: placeholdertekst als label",
+  "matrix": [
+    "7.1.1"
+  ],
+  "titel": "Bezoekers klikken terug in ingevulde velden en wissen alles",
+  "intro": "Een installateur heeft een offerteformulier met zeven velden. Om het 'strak' te houden staat de naam van elk veld alleen als lichtgrijze tekst ín het veld, zoals 'Postcode' en 'Gewenste datum'. Die tekst verdwijnt zodra je begint te typen. In de opnames van Microsoft Clarity zie je veel bezoekers terugklikken naar velden die al zijn ingevuld, de inhoud wissen en opnieuw beginnen.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de meest waarschijnlijke oorzaak, en wat adviseer je?",
+    "opties": [
+      "Bezoekers zien niet meer wat een veld vroeg; zet vaste labels boven de velden, zodat ze hun invoer kunnen nakijken.",
+      "Het formulier heeft te veel velden; schrap er drie, want bij zeven velden haakt het grootste deel van de bezoekers af.",
+      "De grijze tekst is te licht; maak hem donkerder, zodat bezoekers de veldnamen goed lezen voordat ze beginnen te typen.",
+      "Er ontbreekt validatie; voeg inline validatie toe, zodat bezoekers direct zien welk veld fout is ingevuld en waarom."
+    ],
+    "juist": 0
+  },
+  "kern": "Bezoekers wissen hun invoer omdat dat de enige manier is om de verdwenen veldnaam terug te zien.",
+  "afleiders": [
+    "",
+    "**Minder velden:** korter is vaak beter, dus het lijkt een logische stap. Maar minder velden verklaart het wissen en opnieuw beginnen niet.",
+    "**Donkerder grijs:** dat maakt het lezen vóór het typen makkelijker. Maar de tekst verdwijnt nog steeds zodra je typt.",
+    "**Inline validatie:** nuttig om fouten te zien. Maar het helpt niet als de bezoeker niet meer weet wat het veld vroeg."
+  ],
+  "kort": "Stel je een vragenlijst voor waarbij elke vraag verdwijnt zodra je begint te antwoorden. Wil je later nakijken of je bij 'postcode' echt je postcode schreef, dan moet je je antwoord uitgummen om de vraag terug te zien. Zo werkt grijze tekst in een formulierveld: hij verdwijnt bij de eerste letter. Een vast label boven het veld blijft wel staan, dus kun je alles rustig nakijken.",
+  "begrippen": [
+    { "term": "Placeholder", "uitleg": "lichtgrijze tekst in een leeg veld die verdwijnt zodra je begint te typen." },
+    { "term": "Label", "uitleg": "de vaste naam van een formulierveld, meestal erboven." },
+    { "term": "Inline validatie", "uitleg": "een melding direct bij het veld als je iets fout invult, nog voordat je het formulier verstuurt." },
+    { "term": "Microsoft Clarity", "uitleg": "een tool die opnames maakt van hoe bezoekers klikken, typen en scrollen op een site." }
+  ],
+  "uitleg": "Nielsen Norman Group noemt een placeholder als vervanging voor een label schadelijk. Het lijkt netjes, maar kost bezoekers moeite:\n- **Geheugen:** je moet onthouden wat het veld vroeg, want de tekst is weg.\n- **Nakijken:** vóór het versturen kun je niet controleren of alles in het goede veld staat. Ook fouten van automatisch invullen zie je niet.\n- **Fouten herstellen:** bij een foutmelding weet je niet meer welk veld wat was.\n- **Lijkt al ingevuld:** grijze tekst wordt soms aangezien voor een ingevulde waarde, waardoor bezoekers een veld overslaan.\n- **Toegankelijkheid:** lichtgrijze tekst heeft weinig contrast, en niet elke schermlezer leest placeholders voor.\n\nNN/g adviseert **duidelijke, zichtbare labels buiten het veld**. Een placeholder mag dan nog een voorbeeld geven, zoals '1234 AB'. Een 'zwevend label' dat naar boven schuift is beter dan alleen een placeholder, maar een vast label blijft de veiligste keuze.",
+  "kernpunt": "Gebruik grijze tekst in een veld alleen als voorbeeld, nooit als enige naam van het veld.",
+  "toepassing": "Loop vandaag het contact- of offerteformulier van één klant na. Staan de veldnamen alleen in het veld, noteer dan het advies voor vaste labels erboven, en bekijk in Clarity of Hotjar een paar opnames van dat formulier.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Placeholders in Form Fields Are Harmful - Nielsen Norman Group",
+    "url": "https://www.nngroup.com/articles/form-design-placeholders/"
+  }
+}

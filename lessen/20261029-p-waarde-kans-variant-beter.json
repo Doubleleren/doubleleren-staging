@@ -1,0 +1,45 @@
+{
+  "id": "20261029-p-waarde-kans-variant-beter",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "CRO",
+  "onderwerp": "A/B-testen: wat een p-waarde wel en niet betekent",
+  "matrix": [
+    "7.2.2",
+    "7.2.1"
+  ],
+  "titel": "p = 0,03, dus '97% kans dat B beter is'? Lees het testresultaat goed",
+  "intro": "Een A/B-test op een productpagina is afgerond. De testtool meldt voor variant B: conversie +3,1% ten opzichte van A, p = 0,03. De accountmanager schrijft in het klantrapport: 'Er is 97% kans dat variant B beter is.'",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Klopt die zin in het rapport?",
+    "opties": [
+      "Ja: p = 0,03 betekent dat er 3% kans is dat het verschil toeval is, dus 97% dat B echt beter is.",
+      "Nee: de p-waarde zegt hoe verrassend deze data zijn als er geen verschil is, niet hoe kansrijk B is.",
+      "Ja, mits de test minstens twee weken liep; dan is de p-waarde ook de kans dat B echt beter is dan A.",
+      "Nee: p = 0,03 betekent dat B ongeveer 3% beter converteert dan A, en dat zegt niets over een kans."
+    ],
+    "juist": 1
+  },
+  "kern": "De zin klopt niet. Een lage p-waarde zegt dat dit resultaat zeldzaam zou zijn bij gelijke varianten, niet hoe groot de kans is dat B wint.",
+  "afleiders": [
+    "**3% kans op toeval:** zo wordt de p-waarde vaak uitgelegd, dus het klinkt vertrouwd. Maar de American Statistical Association noemt precies dit als misvatting: een p-waarde is niet de kans dat het resultaat toeval is.",
+    "",
+    "**Twee weken looptijd:** een langere test maakt het resultaat betrouwbaarder, dus dat lijkt te helpen. Maar het verandert niets aan wat een p-waarde betekent.",
+    "**3% beter:** het getal 0,03 lijkt op een percentage. Maar de p-waarde is geen effectgrootte. Het gemeten verschil is de +3,1%, de p-waarde is iets anders."
+  ],
+  "kort": "Stel dat een vriend tien keer een munt opgooit en negen keer kop gooit. Met een eerlijke munt zie je zo'n reeks zelden, en dat maakt je wantrouwig. Toch weet je daarmee nog niet hoe groot de kans is dat de munt nep is. De p-waarde rekent net zo: hij gaat ervan uit dat A en B even goed zijn, en kijkt hoe slecht je data daarbij passen. Voor de kans dat B beter is, heb je een andere berekening nodig.",
+  "begrippen": [
+    { "term": "p-waarde", "uitleg": "een getal tussen 0 en 1 dat zegt hoe goed je testdata passen bij het idee dat er geen verschil is. Hoe lager, hoe verrassender." },
+    { "term": "Effectgrootte", "uitleg": "hoe groot het gemeten verschil tussen A en B is, zoals +3,1% conversie." }
+  ],
+  "uitleg": "In 2016 publiceerde de American Statistical Association (ASA) een verklaring over p-waarden, omdat ze zo vaak verkeerd worden gebruikt. Drie principes zijn direct bruikbaar voor A/B-testen:\n\n- Een p-waarde meet **niet** de kans dat de hypothese waar is, en ook niet de kans dat de data alleen door toeval zijn ontstaan.\n- Beslissingen moeten **niet alleen** afhangen van of een p-waarde onder een drempel (zoals 0,05) valt.\n- Een p-waarde of 'significant' resultaat zegt **niets over de grootte** of het belang van een effect.\n\nZo schrijf je het in je rapport:\n- 'Het verschil is statistisch significant (p = 0,03). Als B in werkelijkheid niet beter was, zou je zo'n groot verschil zelden zien.'\n- Noem het gemeten effect met een betrouwbaarheidsinterval, bijvoorbeeld '+3,1% (tussen +0,3% en +5,9%)'.\n- Check of de test volgens plan liep: vooraf bepaalde steekproef, geen tussentijds stoppen en een kloppende verdeling van bezoekers.\n\nWil de klant echt 'de kans dat B beter is', dan heb je een Bayesiaanse analyse nodig. Die geeft wel zo'n kans, op basis van andere aannames.",
+  "kernpunt": "Rapporteer je een A/B-test, noem dan altijd het gemeten effect met een onder- en bovengrens, niet alleen de p-waarde.",
+  "toepassing": "Open vandaag het laatste A/B-testrapport van een klant. Staat er 'X% kans dat B wint' bij een p-waarde, herschrijf die zin dan.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "American Statistical Association: Statement on Statistical Significance and P-Values (2016)",
+    "url": "https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "20261027-hreflang-pdf-http-header",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "hreflang: de juiste methode kiezen (HTML, HTTP-header of sitemap)",
+  "matrix": [
+    "1.3.5",
+    "2.1.17"
+  ],
+  "titel": "Handleidingen als pdf in vier talen: waar zet je de hreflang?",
+  "intro": "Een fabrikant van cv-ketels heeft per model een installatiehandleiding als pdf, in het Nederlands, Frans, Duits en Engels. Iemand uit België met een Franstalige browser krijgt in Google de Nederlandse pdf te zien. De HTML-pagina's van de site hebben al correcte hreflang-tags. *hreflang* vertelt Google welke taalversies van dezelfde inhoud er zijn.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Hoe geef je Google de taalversies van de pdf's door?",
+    "opties": [
+      "Met een Link-header in de HTTP-respons van elke pdf, die alle taalversies noemt, inclusief de pdf zelf.",
+      "Met een <link rel=\"alternate\" hreflang>-tag in de pdf, net als bij een HTML-pagina.",
+      "Dat kan niet: hreflang werkt alleen voor HTML-pagina's. Zet de pdf's op noindex en verwijs naar de HTML-pagina.",
+      "Met een rel=canonical van de Franse, Duitse en Engelse pdf naar de Nederlandse versie."
+    ],
+    "juist": 0
+  },
+  "kern": "Een pdf heeft geen HTML-head, dus de taalversies gaan mee in het antwoord dat de server bij het bestand stuurt.",
+  "afleiders": [
+    "",
+    "**Link-tag in de pdf:** bij een HTML-pagina werkt het zo, dus het lijkt logisch. Maar een pdf heeft geen HTML-head om die tag in te zetten.",
+    "**Kan niet, dus noindex:** hreflang werkt ook voor andere bestanden, via de header of de sitemap. En met noindex maak je de pdf's juist onvindbaar.",
+    "**Canonical naar de Nederlandse pdf:** die zegt dat de andere talen duplicaten zijn. Dan kan Google juist alleen de Nederlandse versie tonen, het omgekeerde van wat je wilt."
+  ],
+  "kort": "Een brief kan zelf vertellen voor wie hij is: dat staat bovenaan. Een dichte doos kan dat niet, dus daar plak je een etiket op de buitenkant. Een webpagina is die brief: bovenin staan de taalversies. Een pdf is de doos, dus de server zet de taalversies op het etiket dat hij met elk bestand meestuurt. Google leest dat etiket en weet welke versie een Franstalige bezoeker moet zien.",
+  "begrippen": [
+    {
+      "term": "hreflang",
+      "uitleg": "een verwijzing die Google vertelt welke taalversies van dezelfde inhoud er zijn."
+    },
+    {
+      "term": "Head",
+      "uitleg": "het bovenste, onzichtbare deel van een HTML-pagina met instellingen voor browsers en zoekmachines."
+    },
+    {
+      "term": "HTTP-header",
+      "uitleg": "extra informatie die de server met elk bestand meestuurt, onzichtbaar voor de bezoeker."
+    },
+    {
+      "term": "Canonical",
+      "uitleg": "een tag die zegt welke versie van een pagina de hoofdversie is."
+    }
+  ],
+  "uitleg": "hreflang kun je op drie manieren doorgeven. Voor Google zijn ze gelijkwaardig:\n\n- **HTML-link-elementen** in de head van elke pagina. Het meest gebruikt, handig als je geen sitemap of headers kunt beheren.\n- **HTTP-headers** (Link: <url>; rel=\"alternate\"; hreflang=\"fr\"). Bedoeld voor bestanden die geen HTML zijn, zoals pdf's.\n- **XML-sitemap** met xhtml:link-regels onder elke URL. Dat werkt ook voor pdf's, en is handig voor grote sites, omdat je de pagina's zelf niet hoeft aan te passen.\n\nDe regels zijn bij alle drie hetzelfde: elke versie noemt zichzelf en alle andere versies, en de verwijzingen moeten over en weer kloppen.\n\nDaarnaast is er **x-default**: de versie voor bezoekers bij wie geen van je talen past, bijvoorbeeld een taalkeuzepagina of de Engelse versie.\n\nCombineren van methodes kan technisch, maar levert volgens Google niets extra op in Search en maakt het beheer lastiger. Kies per type content één methode.",
+  "kernpunt": "Toont Google de verkeerde taalversie van een bestand, kijk dan eerst of dat bestand wel een head heeft waarin hreflang kan staan.",
+  "toepassing": "Zoek vandaag bij een meertalige klant met site:domein.nl filetype:pdf een pdf die in meerdere talen bestaat. Controleer met de URL-inspectietool of de HTTP-respons een Link-header met hreflang heeft.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Tell Google about localized versions of your page | Google Search Central",
+    "url": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+  }
+}

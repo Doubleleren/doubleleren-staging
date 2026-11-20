@@ -1,0 +1,51 @@
+{
+  "id": "20261020-ga4-eventmodel",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "Analytics",
+  "onderwerp": "GA4: het event-based datamodel",
+  "matrix": [
+    "3.1.6"
+  ],
+  "titel": "Waar is mijn Event Category gebleven in GA4?",
+  "intro": "Een klant mailt: \"In het oude Analytics hadden we een event met Category 'Formulier' en Action 'Verzenden'. Waar vind ik die category nu terug in GA4?\" Om dat goed te beantwoorden moet je snappen hoe GA4 data opslaat.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welke uitspraak over het datamodel van GA4 klopt?",
+    "opties": [
+      "GA4 werkt net als Universal Analytics met hit types: pageviews, events en transacties zijn aparte soorten hits.",
+      "In GA4 is de sessie de basiseenheid; events hangen onder een sessie en hebben altijd een Category, Action en Label.",
+      "Elke interactie is een event met een naam en parameters; zelfs het begin van een sessie is een event (session_start).",
+      "GA4 meet alleen events die je zelf aanmaakt; paginaweergaven en scrolls moet je altijd handmatig instellen."
+    ],
+    "juist": 2
+  },
+  "kern": "In GA4 is elke handeling een event met een naam en details, en zelfs het begin van een sessie is zo'n event.",
+  "afleiders": [
+    "**Hit types zoals in UA:** zo werkte het oude Analytics. GA4 kent geen aparte soorten hits meer: een paginaweergave is gewoon het event page_view.",
+    "**Sessie als basis:** sessies bestaan nog, dus het klinkt logisch. Maar ze worden afgeleid uit events, en Category, Action en Label bestaan niet meer.",
+    "",
+    "**Alleen eigen events:** wie uit UA komt, denkt dat alles handwerk is. Maar paginaweergaven en scrolls komen standaard binnen via enhanced measurement."
+  ],
+  "kort": "Het oude Analytics werkte met een vast formulier met drie hokjes: Category, Action en Label. GA4 werkt meer als een logboek: elke gebeurtenis krijgt een naam, en daaronder noteer je de details die erbij horen. Het oude formulier-event wordt dus een gebeurtenis met een eigen naam, met de naam van het formulier als detail. Omdat alles een gebeurtenis is, is zelfs het begin van een bezoek er een.",
+  "begrippen": [
+    { "term": "Event", "uitleg": "een gebeurtenis die GA4 meet, zoals een paginaweergave, een scroll of een aankoop." },
+    { "term": "Parameter", "uitleg": "een extra detail bij een event, zoals de naam van het formulier." },
+    { "term": "Enhanced measurement", "uitleg": "een instelling in GA4 die standaardevents zoals paginaweergaven en scrolls automatisch meet." },
+    { "term": "Universal Analytics (UA)", "uitleg": "de vorige versie van Google Analytics, met hit types en Category, Action en Label." }
+  ],
+  "uitleg": "Google onderscheidt vier soorten events:\n- **Automatisch verzamelde events**, zoals session_start en first_visit\n- **Enhanced measurement**: page_view, scroll (bij 90% scrolldiepte), outbound click, file_download, form_start/form_submit en video-events, aan te zetten per datastream\n- **Aanbevolen events**: vaste namen met voorgeschreven parameters, zoals generate_lead, sign_up en purchase\n- **Custom events**: zelf bedacht, alleen als er geen andere optie past\n\nBij de start van een sessie verstuurt GA4 een session_start-event en krijgt de sessie een ga_session_id. Een sessie eindigt standaard na 30 minuten inactiviteit. Anders dan in UA begint er in GA4 geen nieuwe sessie als de campagnebron halverwege verandert. Sessieaantallen van UA en GA4 zijn daarom niet één-op-één te vergelijken.\n\nHet antwoord aan de klant: de oude Category wordt in GA4 een **eventnaam** (bijvoorbeeld generate_lead) plus **parameters** (bijvoorbeeld form_name). Wil je zo'n parameter in rapporten zien, registreer hem dan als custom dimension.",
+  "kernpunt": "Zet je een oud UA-event over, kies dan eerst een aanbevolen eventnaam en zet de details in parameters.",
+  "toepassing": "Open bij een klant in GA4 Reports > Engagement > Events. Kijk welke events er binnenkomen en markeer welke automatisch of via enhanced measurement komen, welke aanbevolen events zijn en welke custom. Staan er custom events tussen die een aanbevolen naam hadden kunnen krijgen?",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "About events - Analytics Help",
+    "url": "https://support.google.com/analytics/answer/9322688"
+  },
+  "video": {
+    "titel": "Track custom events with Google Analytics 4",
+    "kanaal": "Analytics Mania",
+    "url": "https://www.youtube.com/watch?v=HyFZhvPZUNM"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "20261028-hostingverhuizing-dns-ttl",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "Hosting verhuizen zonder URL-wijziging: DNS en TTL",
+  "matrix": [
+    "5.1.1"
+  ],
+  "titel": "Maandag naar een nieuwe hoster, dezelfde dag de oude opzeggen?",
+  "intro": "Een webshop verhuist volgende week maandag naar een nieuwe hostingpartij. Domein en URL's blijven precies hetzelfde. Het plan van de developer: maandagochtend de DNS-records omzetten naar het nieuwe IP-adres en het oude hostingpakket dezelfde middag opzeggen, 'want dan betalen we niet dubbel'.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Hoe pak je deze verhuizing het best aan?",
+    "opties": [
+      "Op de oude server overal een 301-redirect naar de nieuwe server zetten, zodat Google de nieuwe locatie snel oppikt.",
+      "Na het omzetten een adreswijziging indienen in Search Console, zodat Google weet dat de site verhuisd is.",
+      "Op de nieuwe server tijdelijk alles blokkeren in robots.txt tot de overstap klaar is, zodat Google geen halve site ziet.",
+      "Een week vooraf de TTL verlagen en de oude server laten draaien, zodat niemand tijdens de overstap een dode site ziet."
+    ],
+    "juist": 3
+  },
+  "kern": "Het nieuwe adres is niet meteen overal bekend. Geef het tijd en houd de oude server aan tot niemand hem nog bezoekt.",
+  "afleiders": [
+    "**301 op de oude server:** een redirect klinkt logisch bij een verhuizing. Maar domein en URL's blijven gelijk, dus de redirect zou naar zichzelf wijzen. Een 301 hoort bij een URL-wijziging.",
+    "**Adreswijziging in Search Console:** de naam doet aan elke verhuizing denken. Maar die tool is alleen bedoeld voor een verhuizing naar een ander domein.",
+    "**Blokkeren in robots.txt:** voorzichtig zijn lijkt veilig. Maar zo sluit je Googlebot buiten op het moment dat hij de nieuwe server juist moet leren kennen.",
+    ""
+  ],
+  "kort": "Stel je voor dat je verhuist en je vrienden nog een tijdje je oude adres onthouden. Wie het nieuwe adres nog niet kent, belt aan bij het oude huis. Zo gaat het ook met een website: computers onthouden het oude serveradres zo lang als de TTL aangeeft. Daarom maak je die termijn vooraf kort. En je houdt het oude huis open tot er niemand meer aanbelt, ook Google niet.",
+  "begrippen": [
+    { "term": "DNS", "uitleg": "het adresboek van internet: het zoekt bij een domeinnaam het IP-adres van de server op." },
+    { "term": "IP-adres", "uitleg": "het nummer waarmee een server op internet bereikbaar is." },
+    { "term": "TTL", "uitleg": "time to live: hoe lang een DNS-antwoord onderweg bewaard wordt voordat het opnieuw wordt opgevraagd." },
+    { "term": "301-redirect", "uitleg": "een permanente doorverwijzing van een oude URL naar een nieuwe." }
+  ],
+  "uitleg": "Staat de TTL op een dag en zet je de DNS om, dan komt een deel van de bezoekers en crawlers tot een dag later nog bij de oude server uit. Zeg je die dezelfde middag op, dan krijgen zij foutmeldingen.\n\nGoogles stappenplan voor een hostingwissel zonder URL-wijziging:\n- Zet de nieuwe omgeving klaar en test hem, bijvoorbeeld met een tijdelijke hostname.\n- Verlaag de **TTL** minstens een week vooraf naar een lage waarde, zoals een paar uur.\n- Zet de DNS om naar de nieuwe server.\n- Kijk in de logs van de oude server of daar nog verkeer binnenkomt. Pas als dat naar nul is gezakt en je zeker weet dat ook Googlebot de nieuwe server bereikt, zeg je de oude hosting op.\n- Houd de **crawlstatistieken** in Search Console in de gaten. Een tijdelijke daling van de crawlfrequentie direct na de overstap is normaal. Daarna loopt hij in een paar dagen weer op, soms tot boven het oude niveau.\n\nDe zoekmachine merkt van zo'n verhuizing weinig, zolang de site bereikbaar blijft en snel antwoordt.",
+  "kernpunt": "Wisselt een klant van hosting, vraag dan eerst naar de huidige TTL en de opzegdatum van de oude server.",
+  "toepassing": "Zoek vandaag met een DNS-checker op welke TTL de DNS-records van een klant nu hebben, en noteer of dat uren of dagen is.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Changing Your Web Hosting and SEO | Google Search Central",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes"
+  }
+}

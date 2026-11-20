@@ -1,0 +1,54 @@
+{
+  "id": "20261023-verwijderingen-tijdelijk",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "De tool Verwijderingen in Search Console",
+  "matrix": [
+    "1.5.2"
+  ],
+  "titel": "Staging-site uit Google gehaald met Verwijderingen: klaar?",
+  "intro": "Een klant heeft per ongeluk een testomgeving van 60 pagina's openbaar gezet op staging.klant.nl, en die pagina's staan nu in Google. De klant heeft het subdomein in Search Console geverifieerd en via Verwijderingen een tijdelijk verzoek ingediend voor alle URL's met dat voorvoegsel. Een week later is niets meer te vinden. De testomgeving zelf staat nog gewoon open.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "De klant vindt het klaar. Wat adviseer je?",
+    "opties": [
+      "Klaar: een goedgekeurd verzoek haalt de URL's definitief uit de index, ook als de staging zelf openblijft.",
+      "Nog niet: zet Disallow: / in de robots.txt van de staging, dan blijven de URL's na afloop van het verzoek weg.",
+      "Nog niet: het verzoek verloopt na 30 dagen, dus dien het elke maand opnieuw in tot Google de URL's vergeet.",
+      "Nog niet: het verzoek verbergt de URL's tijdelijk. Zet de staging achter een wachtwoord, dan blijven ze weg."
+    ],
+    "juist": 3
+  },
+  "kern": "De tool verbergt de pagina's maar een tijd, en zolang de testsite openstaat, kunnen ze terugkomen.",
+  "afleiders": [
+    "**Klaar:** de pagina's zijn onvindbaar, dus het lijkt opgelost. Maar het verzoek verbergt ze maar ongeveer zes maanden, en Google blijft ze crawlen.",
+    "**Disallow in robots.txt:** dat lijkt Google buiten te houden. Maar een geblokkeerde pagina kan nog in de index staan, en een noindex kan Google dan niet meer lezen. Google raadt het hier af.",
+    "**Elke maand opnieuw indienen:** dat neemt de oorzaak niet weg. Bovendien duurt een verzoek geen 30 dagen, maar ongeveer zes maanden.",
+    ""
+  ],
+  "kort": "Vergelijk het met een gordijn voor een etalage. Voorbijgangers zien even niets, maar de winkel is nog open en de deur zit niet op slot. Gaat het gordijn weg, dan ligt alles er weer. De tool Verwijderingen is zo'n gordijn: Google blijft de testsite gewoon bezoeken. Pas een wachtwoord doet de deur echt op slot, voor Google en voor iedereen.",
+  "begrippen": [
+    {
+      "term": "Staging-site",
+      "uitleg": "een testomgeving: een kopie van de website om wijzigingen te testen voordat ze live gaan."
+    },
+    {
+      "term": "Verwijderingen",
+      "uitleg": "een tool in Search Console die URL's tijdelijk verbergt in de zoekresultaten."
+    },
+    {
+      "term": "Disallow",
+      "uitleg": "de regel in robots.txt die een crawler verbiedt een adres op te halen."
+    }
+  ],
+  "uitleg": "De tool **Verwijderingen** (vroeger Remove URLs) in Search Console is een noodknop, geen opruimtool. Hij werkt snel, maar tijdelijk.\n\nWat de tool doet:\n- **Tijdelijke verwijdering:** verbergt een URL, of alle URL's met een voorvoegsel, in de zoekresultaten.\n- **Snippet wissen:** haalt de beschrijving onder een resultaat weg tot de pagina opnieuw is gecrawld.\n\nWat de tool niet doet: de pagina blijvend uit de index halen of het crawlen stoppen.\n\nDe juiste volgorde bij een ongewenste pagina in Google:\n- **Eerst de oorzaak wegnemen.** Een testomgeving zet je achter een login of wachtwoord: dat houdt ook bezoekers en andere zoekmachines buiten. Voor losse pagina's gebruik je noindex of een 404/410.\n- **Dan, als het snel moet, Verwijderingen gebruiken** om de URL's meteen te verbergen terwijl Google de wijziging oppakt.\n\nOnder hetzelfde menu zie je ook verzoeken van anderen voor verouderde content, en URL's die door SafeSearch als expliciet zijn gefilterd.",
+  "kernpunt": "Moet iets uit Google, neem dan eerst de oorzaak weg met een wachtwoord, noindex of 404/410, en gebruik Verwijderingen alleen om de tussentijd te overbruggen.",
+  "toepassing": "Zoek vandaag voor één klant met site:staging.klantdomein.nl of zijn testomgeving in Google staat, en kijk of die achter een wachtwoord zit.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Removals and SafeSearch reports Tool - Search Console Help",
+    "url": "https://support.google.com/webmasters/answer/9689846"
+  }
+}

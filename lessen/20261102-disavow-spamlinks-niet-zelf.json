@@ -1,0 +1,44 @@
+{
+  "id": "20261102-disavow-spamlinks-niet-zelf",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Linkspam na Penguin: wanneer disavow je links (en meestal niet)?",
+  "matrix": ["10.1.2"],
+  "titel": "400 casinolinks uit het niets: vandaag nog een disavow-bestand?",
+  "intro": "Een klant ziet in Ahrefs opeens 400 nieuwe backlinks van onbekende buitenlandse sites vol casinoteksten. Hij heeft er zelf niets voor gedaan en nooit links gekocht of laten plaatsen. Rankings en verkeer zijn stabiel, en in Search Console staat geen handmatige actie. Hij wil 'voor de zekerheid' vandaag een disavow-bestand indienen.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat adviseer je?",
+    "opties": [
+      "Indienen, want spamlinks die je niet afwijst, leveren vroeg of laat een handmatige actie voor de hele site op.",
+      "Niet nodig: Google negeert zulke links meestal zelf. Disavow is voor kunstmatige links die je zelf liet maken.",
+      "Indienen, maar dan via een Domein-property, zodat ook alle subdomeinen en http-varianten meteen zijn afgedekt.",
+      "Niet indienen, maar bij elke site een verwijderverzoek sturen, want Google telt elke spamlink als minpunt."
+    ],
+    "juist": 1
+  },
+  "kern": "Zonder gekochte links, handmatige actie of dalende cijfers is er niets om op te reageren. Google telt zulke rommel meestal zelf niet mee.",
+  "afleiders": [
+    "**Voor de zekerheid indienen:** het voelt veilig, maar een handmatige actie volgt niet automatisch uit links die je niet zelf hebt gemaakt.",
+    "",
+    "**Via een Domein-property:** dat klinkt grondiger, maar de disavow-tool ondersteunt Domein-properties juist niet. Je dient in per URL-voorvoegsel-property, en hier is indienen sowieso niet nodig.",
+    "**Verwijderverzoeken sturen:** dat lijkt netjes, maar 400 spamsites aanschrijven kost veel tijd. Omdat Google zulke links meestal niet meetelt, is het hier niet nodig."
+  ],
+  "kort": "Vergelijk het met spam in je mailbox. Je spamfilter vangt het meeste zelf op, en je gaat niet elke afzender een boze mail sturen. Pas als je je zelf ergens voor hebt aangemeld en dat problemen geeft, moet je zelf iets doen. Zo kijkt Google ook naar spamlinks: rommel die vanzelf binnenkomt, telt meestal gewoon niet mee.",
+  "begrippen": [
+    { "term": "Backlink", "uitleg": "een link van een andere website naar jouw site." },
+    { "term": "Disavow-bestand", "uitleg": "een lijst waarmee je Google vraagt bepaalde links naar je site te negeren." },
+    { "term": "Handmatige actie", "uitleg": "een straf van Google voor een site die de regels overtreedt, zichtbaar in Search Console." },
+    { "term": "Domein-property", "uitleg": "een property in Search Console die alle subdomeinen en zowel http als https omvat." }
+  ],
+  "uitleg": "Sinds 2016 is **Penguin** een realtime onderdeel van het kernalgoritme. Google devalueert spamlinks: ze tellen niet mee, in plaats van dat de hele site wordt gestraft. Dezelfde gedachte zit in de latere link spam updates.\n\nDe **disavow-tool** is volgens Google een geavanceerde functie die je voorzichtig gebruikt. Hij is bedoeld voor sites met:\n- een flink aantal spammy, kunstmatige of slechte links, bijvoorbeeld gekocht of via linkruil, **en**\n- een handmatige actie die daardoor is ontstaan of waarschijnlijk gaat ontstaan.\n\nGoogle raadt aan eerst zoveel mogelijk van die links te laten verwijderen, en pas daarna de rest te disavowen.\n\nPraktische regels als je het toch doet:\n- een .txt-bestand in UTF-8 of 7-bit ASCII, één URL of domein per regel\n- hele domeinen met domain:voorbeeld.nl, opmerkingen met #\n- maximaal 100.000 regels en 2 MB\n- het geldt per property (en onderliggende properties); een nieuwe upload vervangt de oude lijst",
+  "kernpunt": "Ziet een klant opeens veel spamlinks, kijk dan eerst naar handmatige acties en de cijfers. Pas als daar iets mis is, denk je aan disavow.",
+  "toepassing": "Kijk bij een klant met een disavow-bestand of er een reden voor was (gekochte links of een handmatige actie). Staat er niets van in de historie, bespreek dan of de lijst nog nodig is.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Disavow links to your site - Search Console Help",
+    "url": "https://support.google.com/webmasters/answer/2648487"
+  }
+}

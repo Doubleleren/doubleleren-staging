@@ -1,0 +1,43 @@
+{
+  "id": "20261029-categorietekst-keyword-stuffing",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Body copy: de SEO-tekst onder een categoriepagina",
+  "matrix": ["2.1.13"],
+  "titel": "900 woorden onder de loungesets: wat doe je met die tekst?",
+  "intro": "Een webshop in tuinmeubelen heeft onder elke categoriepagina een tekst van 900 woorden. In de tekst bij loungesets staat 'loungeset kopen' 23 keer. Onderaan staat een blok: 'loungeset Amsterdam, loungeset Utrecht, loungeset Rotterdam…', voor 40 plaatsen. De webshop verstuurt alles vanuit één magazijn en heeft geen winkels.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "De klant vraagt wat hij het beste met deze tekst kan doen. Welk advies geef je?",
+    "opties": [
+      "Laten staan: hoe vaker het zoekwoord en hoe meer plaatsen erin staan, hoe meer zoekopdrachten de pagina kan raken",
+      "Uitbreiden naar 1.500 woorden met meer varianten van het zoekwoord, want een langere tekst rankt beter",
+      "Het plaatsenblok schrappen en de tekst herschrijven voor de koper, want het zoekwoord valt dan vanzelf op de juiste plekken",
+      "Het plaatsenblok met CSS verbergen, zodat Google het nog leest maar bezoekers er geen last van hebben"
+    ],
+    "juist": 2
+  },
+  "kern": "Eindeloze herhaling en een lijst met plaatsnamen ziet Google als spam. Een tekst die de koper helpt kiezen, bevat het zoekwoord vanzelf.",
+  "afleiders": [
+    "**Laten staan:** meer zoekwoorden lijkt meer kansen te geven. Maar een lijst met plaatsen en onnatuurlijke herhaling noemt Google letterlijk als voorbeelden van keyword stuffing. Dat is spam, dus laten staan is een risico.",
+    "**Uitbreiden naar 1.500 woorden:** langere teksten lijken vaak beter te scoren. Maar volgens Google maakt de lengte van een tekst op zich niet uit voor de ranking.",
+    "",
+    "**Verbergen met CSS:** dat lijkt het beste van twee werelden. Maar verborgen tekst om zoekmachines te sturen valt ook onder het spambeleid. Dat is dus nog erger."
+  ],
+  "kort": "Stel je een verkoper voor die in elke zin 'loungeset kopen' zegt en daarna veertig plaatsnamen opsomt. Je loopt de winkel uit, ook al bedoelt hij het goed. Google reageert net zo: het herkent die truc en ziet de tekst als spam. Een verkoper die vertelt over materiaal, zitplaatsen en onderhoud helpt je wel kiezen. En over loungesets praat hij dan vanzelf.",
+  "begrippen": [
+    { "term": "Keyword stuffing", "uitleg": "een zoekwoord zo vaak herhalen, of zoveel plaatsnamen opnemen, dat de tekst onnatuurlijk wordt. Google ziet dat als spam." },
+    { "term": "Categoriepagina", "uitleg": "een overzichtspagina met alle producten uit één groep, zoals loungesets." },
+    { "term": "CSS", "uitleg": "de code die bepaalt hoe een pagina eruitziet. Je kunt er ook tekst mee verbergen." }
+  ],
+  "uitleg": "**Body copy** is de lopende tekst op een pagina. Op categoriepagina's staat vaak een 'SEO-tekst' onderaan die vooral voor Google geschreven is. Google zegt daar duidelijk over:\n\n- Het eindeloos herhalen van hetzelfde woord, ook in varianten, is vermoeiend voor bezoekers. Gaat het zo ver dat het onnatuurlijk klinkt, dan is het **keyword stuffing**.\n- Ook **lijsten met plaatsen of regio's** waarop je wilt ranken staan als voorbeeld in het spambeleid.\n- Er is **geen magisch aantal woorden**.\n\nSchrijf voor de koper die op die pagina belandt. Bij loungesets: waar let je op bij materiaal, hoeveel zitplaatsen heb je nodig, hoe onderhoud je het, wat zijn de levertijden. Dat zijn vragen die mensen echt hebben.\n\nZet korte, nuttige tekst liever bóven de producten (een paar zinnen) en uitgebreidere hulp eronder. Wil de klant lokaal gevonden worden, dan helpt een plaatsenlijst niet. Lokaal gevonden worden draait om echte aanwezigheid in een regio, bijvoorbeeld met een Bedrijfsprofiel.",
+  "kernpunt": "Staat er een SEO-tekst onder een categorie, vraag je dan eerst af of een koper er iets aan heeft.",
+  "toepassing": "Open vandaag de categoriepagina met het meeste verkeer bij een klant, lees alleen de SEO-tekst hardop en streep alles door wat een koper niet helpt kiezen.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Spam Policies for Google Web Search | Google Search Central",
+    "url": "https://developers.google.com/search/docs/essentials/spam-policies"
+  }
+}

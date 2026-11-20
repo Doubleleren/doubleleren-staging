@@ -1,0 +1,44 @@
+{
+  "id": "20261105-robots-txt-503-crawlstop",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Crawlstatistieken: hoststatus en een onbereikbare robots.txt",
+  "matrix": ["1.5.4", "1.3.6"],
+  "titel": "Het hele weekend een 503 op robots.txt: wat deed Googlebot?",
+  "intro": "Een B2B-site verhuisde vrijdagmiddag naar een nieuwe server. Door een verkeerde firewallregel gaf alleen /robots.txt het hele weekend een 503 terug (de server zegt: tijdelijk niet beschikbaar). Alle andere pagina's werkten gewoon. Maandag ziet de SEO-specialist in Search Console, onder Instellingen → Crawlstatistieken, een rode hoststatus.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat deed Googlebot waarschijnlijk in de eerste uren nadat robots.txt een 503 begon te geven?",
+    "opties": [
+      "Gewoon doorcrawlen zonder beperkingen, want een robots.txt die niet laadt betekent voor Google dat alles mag.",
+      "Stoppen met crawlen, want Google wil eerst weten wat niet mag voordat het weer pagina's van de site ophaalt.",
+      "Doorcrawlen met de regels van de vorige versie, want Google negeert een korte storing van robots.txt helemaal.",
+      "De pagina's uit de index halen, want een serverfout op robots.txt geldt voor Google als een fout op de hele site."
+    ],
+    "juist": 1
+  },
+  "kern": "Zolang Google niet kan lezen wat verboden is, haalt het voor de zekerheid niets op. Pas na 12 uur valt het terug op de laatst bekende versie.",
+  "afleiders": [
+    "**Alles mag:** dat geldt voor een 404 op robots.txt. Een ontbrekend bestand is voor Google een geldig antwoord, een 503 niet.",
+    "",
+    "**Vorige versie:** dat gebeurt wel, maar pas na de eerste 12 uur. In de eerste uren crawlt Google niet.",
+    "**Uit de index halen:** een fout op robots.txt klinkt ernstig. Maar een tijdelijke storing van dat bestand haalt geen pagina's uit de index."
+  ],
+  "kort": "Een bezorger komt bij een bedrijfspand en wil eerst het bord met huisregels lezen. Hangt daar een briefje 'tijdelijk gesloten' voor, dan gaat hij niet zomaar naar binnen. Misschien mag het nu niet. Hangt er helemaal geen bord, dan weet hij dat er geen regels zijn en loopt hij door. Zo gaat Google om met een regelbestand dat tijdelijk niet laadt, tegenover een bestand dat er gewoon niet is.",
+  "begrippen": [
+    { "term": "robots.txt", "uitleg": "een bestand op je site waarin staat welke delen zoekmachines niet mogen crawlen." },
+    { "term": "503", "uitleg": "een statuscode waarmee de server zegt: tijdelijk niet beschikbaar." },
+    { "term": "404", "uitleg": "een statuscode waarmee de server zegt: deze pagina of dit bestand bestaat niet." },
+    { "term": "Hoststatus", "uitleg": "het deel van Crawlstatistieken in Search Console dat laat zien of Google je server goed kon bereiken." }
+  ],
+  "uitleg": "Googlebot blijft robots.txt wel steeds opnieuw proberen op te halen. Volgens Google gaat het daarna zo:\n\n- **Eerste 12 uur:** Google crawlt niet.\n- **Van 12 uur tot 30 dagen:** Google gebruikt de laatste versie van robots.txt die wel lukte.\n- **Na 30 dagen:** is de homepage bereikbaar, dan crawlt Google zonder beperkingen. Anders blijft het stil.\n\nDe **hoststatus** in Crawlstatistieken heeft drie grafieken: robots.txt ophalen, DNS-resolutie en serververbinding. Komen de fouten op een dag boven de rode stippellijn, dan telt dat als probleem. Een probleem in de afgelopen week geeft een rode status. Was het langer geleden, maar binnen 90 dagen, dan zie je 'problemen in het verleden'.\n\nNa een serververhuizing:\n- Controleer direct na de livegang of /robots.txt een **200** of een **404** geeft, niet een 5xx of time-out.\n- Kijk ook naar firewalls en botbeveiliging. Die blokkeren soms juist Googlebot.\n- Een kort crawlgat herstelt zich meestal vanzelf. Een storing die dagen duurt, kost nieuwe en gewijzigde pagina's wel tijd.",
+  "kernpunt": "Verhuist een klant naar een nieuwe server of CDN, controleer dan eerst of /robots.txt een 200 of 404 geeft, nooit een 5xx.",
+  "toepassing": "Open vandaag bij een klant in Search Console Instellingen → Crawlstatistieken en bekijk de hoststatus. Staat robots.txt ophalen op rood of op 'problemen in het verleden', zoek dan uit wanneer dat begon.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Crawl Stats report - Search Console Help",
+    "url": "https://support.google.com/webmasters/answer/9679690"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "20261020-seo-ppc-relatie",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "SEO en PPC: hoe hangen ze samen?",
+  "matrix": [
+    "9.2.1"
+  ],
+  "titel": "Helpt adverteren in Google Ads je organische posities?",
+  "intro": "Een klant zegt in een overleg: \"We geven elke maand flink uit aan Google Ads. Dat helpt toch ook onze organische posities?\"",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is het juiste antwoord aan de klant?",
+    "opties": [
+      "Ja, een beetje: wie flink adverteert, krijgt van Google een kleine boost in de organische resultaten.",
+      "Indirect wel: de Quality Score van je advertenties telt bij Google ook mee als organisch rankingsignaal.",
+      "Nee: Ads en organisch zijn gescheiden, maar ze delen wel dezelfde zoekers, zoekwoorddata en ruimte in de SERP.",
+      "Nee, het werkt zelfs andersom: wie adverteert, wordt organisch lager getoond tegen dubbele vermeldingen."
+    ],
+    "juist": 2
+  },
+  "kern": "Betalen voor advertenties verandert niets aan je organische plek, maar beide kanalen leren wel van dezelfde zoekers.",
+  "afleiders": [
+    "**Kleine boost:** het voelt logisch dat een grote adverteerder beloond wordt. Maar Google accepteert nooit geld om sites op te nemen of hoger te ranken.",
+    "**Quality Score:** het klinkt als een algemene kwaliteitsmaat. Maar het is een begrip uit Google Ads en speelt geen rol in de organische ranking.",
+    "",
+    "**Lager door dubbele vermelding:** dit is verzonnen. Je kunt prima tegelijk een advertentie en een organisch resultaat hebben."
+  ],
+  "kort": "Een advertentie in de krant is iets anders dan een recensie van de redactie: de redactie schrijft niet positiever omdat jij adverteert. Zo staan betaalde en gratis resultaten in Google los van elkaar. Toch helpen ze elkaar. Je advertenties laten zien welke zoekwoorden goed werken, en samen neem je meer ruimte in op de pagina.",
+  "begrippen": [
+    { "term": "PPC", "uitleg": "pay-per-click: betaald adverteren waarbij je per klik betaalt, zoals in Google Ads. In Nederland meestal SEA genoemd." },
+    { "term": "Organisch", "uitleg": "de gewone, onbetaalde zoekresultaten in Google." },
+    { "term": "Quality Score", "uitleg": "een score in Google Ads voor hoe relevant je advertenties en landingspagina's zijn." },
+    { "term": "SERP", "uitleg": "de pagina met zoekresultaten die je ziet na een zoekopdracht." }
+  ],
+  "uitleg": "Volgens Google heeft adverteren bij Google geen effect op je aanwezigheid in de zoekresultaten. SEO en PPC staan op dezelfde pagina, maar werken via **twee gescheiden systemen**:\n- **Organisch:** de volgorde wordt programmatisch bepaald door de rankingsystemen van Google. Een klik kost niets, maar resultaat opbouwen kost tijd.\n- **Betaald:** een veiling in Google Ads. Je bent direct zichtbaar, maar het verkeer stopt zodra het budget stopt.\n\nDe relatie zit niet in de ranking, maar in alles eromheen:\n- **Dezelfde zoeker, dezelfde zoekvraag.** Zoektermen die in Ads goed converteren, zijn waardevolle input voor je SEO-prioriteiten. Omgekeerd laat Search Console zoekwoorden zien waar je organisch al vertoningen hebt.\n- **Dezelfde pagina.** Een sterke landingspagina helpt allebei: betere conversie voor Ads en een beter antwoord voor organisch.\n- **Samen meer ruimte in de SERP.** Met een advertentie én een organisch resultaat ben je vaker zichtbaar voor dezelfde zoekopdracht.\n\nDe korte uitleg voor een klant: *Ads koopt zichtbaarheid nu, SEO bouwt zichtbaarheid voor later.*",
+  "kernpunt": "Vraagt een klant of Ads zijn SEO helpt, laat dan met zijn eigen zoekwoorddata zien hoe de twee elkaar slimmer maken.",
+  "toepassing": "Kijk vandaag bij één klant met Google Ads welke drie zoektermen in Ads het best converteren, en check in Search Console hoe de klant daar organisch op staat.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Do You Need an SEO? Tips for Hiring an SEO | Google Search Central",
+    "url": "https://developers.google.com/search/docs/fundamentals/do-i-need-seo"
+  },
+  "video": {
+    "titel": "The Absolute Beginner's Guide to Google Ads 2025",
+    "kanaal": "Aaron Young",
+    "url": "https://www.youtube.com/watch?v=hLFYOS_lGOE"
+  }
+}

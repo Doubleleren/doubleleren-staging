@@ -1,0 +1,47 @@
+{
+  "id": "20261103-ab-test-segment-achteraf",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "CRO",
+  "onderwerp": "A/B-testen: segmenten achteraf en het probleem van meervoudig testen",
+  "matrix": [
+    "7.2.2",
+    "7.2.1"
+  ],
+  "titel": "Geen winnaar, behalve op de iPad: alleen daar uitrollen?",
+  "intro": "Een A/B-test op de productpagina van een webshop is na vier weken klaar: geen significant verschil. De analist splitst de resultaten daarna uit in 20 segmenten, zoals apparaat, browser, kanaal en nieuw of terugkerend. In één segment, Safari op iPad, wint de variant met p = 0,04. Het voorstel: de variant alleen voor iPad-gebruikers uitrollen.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat doe je met deze uitkomst?",
+    "opties": [
+      "Niet uitrollen: bij 20 segmenten vind je er toevallig vaak één 'winnaar'; test dit segment opnieuw apart.",
+      "Uitrollen voor iPad: p = 0,04 ligt onder 0,05, dus het effect in dit segment is statistisch bewezen.",
+      "Uitrollen voor iedereen: wint de variant in één segment, dan werkt hij elders ook, maar zie je het minder.",
+      "Niet uitrollen, maar de test twee weken verlengen tot ook het totaal onder p = 0,05 komt, en dan beslissen."
+    ],
+    "juist": 0
+  },
+  "kern": "Twintig segmenten achteraf zijn twintig kansen op toeval. Eén 'winnaar' daartussen is een idee om opnieuw te testen, geen bewijs.",
+  "afleiders": [
+    "",
+    "**Uitrollen voor iPad:** p = 0,04 lijkt overtuigend, want het ligt onder 0,05. Maar bij 20 segmenten is één zo'n uitkomst precies wat toeval oplevert.",
+    "**Uitrollen voor iedereen:** het klinkt logisch dat een winnaar elders ook werkt. Maar één segment zegt niets over de andere, en het totaal liet juist geen verschil zien.",
+    "**Test verlengen:** doorgaan tot het wel significant is, voelt als extra zekerheid. Maar dat is peeking, en dat vergroot juist de kans op een vals positief resultaat."
+  ],
+  "kort": "Gooi twintig keer met een dobbelsteen, dan zit er bijna zeker een zes tussen. Niemand denkt dan dat die ene worp bijzonder was. Segmenten achteraf werken net zo. Elk segment is een extra worp, met 5% kans op een winnaar die er niet is. Hoe meer groepen je bekijkt, hoe groter de kans dat er toevallig een 'winnaar' tussen zit.",
+  "begrippen": [
+    { "term": "Segment", "uitleg": "een deel van de bezoekers, bijvoorbeeld alleen Safari op iPad of alleen nieuwe bezoekers." },
+    { "term": "p-waarde", "uitleg": "hoe waarschijnlijk zo'n verschil is als er in werkelijkheid geen verschil is. Onder 0,05 heet een uitkomst meestal significant." },
+    { "term": "Vals positief", "uitleg": "een 'winnaar' die er in werkelijkheid niet is: het verschil komt door toeval." },
+    { "term": "Peeking", "uitleg": "tussendoor naar de resultaten kijken en de test stoppen of verlengen zodra het je uitkomt." }
+  ],
+  "uitleg": "Adobe legt het uit in de documentatie van Adobe Target: is er geen echt verschil, dan is de kans op een vals positief resultaat per segment gelijk aan het significantieniveau. Bij 5% verwacht je dus **gemiddeld één vals positief resultaat per 20 segmenten**. De kans dat er minstens één tussen zit, is bij 20 onafhankelijke segmenten ongeveer 64%.\n\nBovendien is een segment veel kleiner dan de hele test. De steekproef was berekend op het totaal, niet op Safari op iPad.\n\nWat je wel doet:\n- **Leg vooraf vast** welke segmenten je wilt bekijken, en waarom.\n- **Corrigeer** als je meerdere vergelijkingen maakt. Met de eenvoudige Bonferroni-correctie deel je het significantieniveau door het aantal vergelijkingen: 5% / 20 = 0,25%.\n- **Noteer** een opvallend segment als hypothese in je testlog, niet als resultaat.\n- **Test opnieuw**: een nieuwe test, alleen op dat segment, met een eigen steekproefberekening.\n\nZo blijft een segmentanalyse wat hij moet zijn: een bron van nieuwe ideeën.",
+  "kernpunt": "Wil je segmenten bekijken, leg dan vóór de test vast welke. Zie alles wat je daarna pas ontdekt als hypothese.",
+  "toepassing": "Open vandaag het testlog van één klant en zoek een beslissing die op één segment rust. Zet erbij dat het een hypothese is die nog een eigen test nodig heeft.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "How Do I Avoid Common A/B Testing Mistakes? | Adobe Target (Experience League)",
+    "url": "https://experienceleague.adobe.com/en/docs/target/using/activities/abtest/common-ab-testing-pitfalls"
+  }
+}

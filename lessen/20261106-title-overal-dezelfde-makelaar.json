@@ -1,0 +1,43 @@
+{
+  "id": "20261106-title-overal-dezelfde-makelaar",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Meta title: unieke, beschrijvende titles in plaats van één sjabloon",
+  "matrix": ["2.1.8"],
+  "titel": "300 woningpagina's met precies dezelfde title",
+  "intro": "Een makelaarskantoor heeft 300 woningpagina's. Ze hebben allemaal dezelfde title: 'Makelaar Van Dijk | Wonen in Utrecht | Huizen te koop | Hypotheekadvies | Taxatie'. Een SEO-tool meldt bij elke pagina: 'Title langer dan 60 tekens'. De klant wil de titles verbeteren, maar heeft maar een paar uur developertijd.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de belangrijkste verbetering voor deze titles?",
+    "opties": [
+      "Alle titles inkorten tot maximaal 60 tekens, want Google negeert een langere title en kiest dan zelf een andere tekst.",
+      "In elke title 'huis kopen Utrecht' zetten, want als die woorden op elke pagina staan, wordt de site sterker op die zoekterm.",
+      "De merknaam uit de titles halen, want Google toont de naam van de site al apart boven elk resultaat in de zoekresultaten.",
+      "Elke pagina een eigen title geven met het adres van de woning, want nu zegt geen enkele title wat er op die pagina staat."
+    ],
+    "juist": 3
+  },
+  "kern": "Het probleem is niet de lengte, maar dat 300 pagina's dezelfde naam dragen. Een title moet per pagina zeggen wat erop staat.",
+  "afleiders": [
+    "**Inkorten tot 60 tekens:** de SEO-tool meldt het, dus het lijkt dringend. Maar een limiet van 60 tekens bestaat niet: Google kort een lange title zelf af, vaak op de breedte van het scherm.",
+    "**Overal hetzelfde zoekwoord:** meer herhaling lijkt meer kracht te geven. Maar de titles worden dan nog meer gelijk, en Google noemt herhaling van woorden zelfs iets wat er spammy uitziet.",
+    "**Merknaam weghalen:** dat lijkt ruimte te winnen. Maar de merknaam mag blijven: Google raadt aan hem aan het begin of eind te zetten, gescheiden door een streepje of een |.",
+    ""
+  ],
+  "kort": "Stel dat alle mappen in een archiefkast hetzelfde etiket hebben: 'Belangrijke papieren'. Dan moet je elke map openen om te zien wat erin zit. Zo gaat het nu met de woningpagina's: zoekers en Google zien aan de titel niet welke woning het is. Een eigen etiket per map, met het adres, lost dat op. En je hoeft niet 300 etiketten met de hand te schrijven: één sjabloon vult per pagina het adres in.",
+  "begrippen": [
+    { "term": "Title", "uitleg": "de titel van een pagina in de code, die Google vaak als kop van je zoekresultaat gebruikt." },
+    { "term": "Title link", "uitleg": "de klikbare titel van je resultaat in Google, die Google zelf samenstelt." },
+    { "term": "Sjabloon", "uitleg": "een vaste opbouw waarin per pagina gegevens worden ingevuld, zoals adres en plaats." }
+  ],
+  "uitleg": "Google maakt de titel in de zoekresultaten (de 'title link') automatisch. Het kijkt vooral naar de title, maar ook naar de grootste kop op de pagina (H1), og:title en linkteksten naar de pagina. Wijkt de title sterk af van de pagina, of is hij overal gelijk, dan kiest Google vaker zelf een andere tekst.\n\nEen goede title:\n\n- is **uniek per pagina** en beschrijft de inhoud;\n- is **kort en duidelijk**, zonder rijtjes zoekwoorden;\n- heeft de **merknaam** hooguit één keer, aan het begin of eind;\n- past bij de **zichtbare kop** op de pagina.\n\nOp de homepage mag de title iets meer over het bedrijf vertellen. Bij veel gelijksoortige pagina's maak je de title met een sjabloon uit de data, zoals adres, plaats en type woning. Dat kost weinig developertijd.",
+  "kernpunt": "Hebben veel pagina's dezelfde title, los dan eerst het dubbele op met een sjabloon uit de data, en kijk pas daarna naar de lengte.",
+  "toepassing": "Exporteer vandaag de titles uit een recente Screaming Frog-crawl van een klant en filter op 'Duplicate'. Kies het paginatype met de meeste dubbele titles en stel een sjabloon voor met gegevens die per pagina verschillen.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Influencing your title links in search results | Google Search Central",
+    "url": "https://developers.google.com/search/docs/appearance/title-link"
+  }
+}

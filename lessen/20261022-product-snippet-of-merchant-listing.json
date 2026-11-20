@@ -1,0 +1,58 @@
+{
+  "id": "20261022-product-snippet-of-merchant-listing",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "Product-markup: product snippets vs. merchant listings",
+  "matrix": [
+    "2.2.1"
+  ],
+  "titel": "Webshop én reviewblog: welke productresultaten kun je krijgen?",
+  "intro": "Een klant heeft twee soorten pagina's met Product-markup: productpagina's in de eigen webshop, met prijs, voorraad en een winkelwagen, en een vergelijkingsblog met reviews van producten die alleen bij andere winkels te koop zijn. Hij wil op beide paginatypes zoveel mogelijk productinformatie in Google tonen, inclusief verzendkosten en retourbeleid.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welk advies klopt?",
+    "opties": [
+      "Beide paginatypes komen in aanmerking voor merchant listings, zolang de markup een offer met prijs en verzendkosten bevat.",
+      "Alleen de webshop kan merchant listings met verzend- en retourinfo krijgen; de reviewblog wel product snippets.",
+      "De reviewblog kan geen enkele vorm van Product-markup gebruiken, omdat er op die pagina's zelf niets te koop is.",
+      "Productresultaten vereisen een Merchant Center-account; zonder account negeert Google de markup op beide paginatypes."
+    ],
+    "juist": 1
+  },
+  "kern": "Verzend- en retourinfo krijg je alleen op pagina's waar je echt kunt kopen, een reviewpagina kan wel extra productinfo bij het gewone resultaat krijgen.",
+  "afleiders": [
+    "**Beide merchant listings:** met een prijs in de markup lijkt de reviewblog een verkooppagina. Maar op die pagina kun je niets kopen, en dat telt, niet wat er in de markup staat.",
+    "",
+    "**Geen markup op de blog:** logisch als je denkt dat Product-markup alleen voor verkoop is. Maar product snippets zijn juist bedoeld voor pagina's over een product, zoals reviews.",
+    "**Merchant Center verplicht:** voor productresultaten lijkt dat de route. Maar een Merchant Center-feed is een extra route, geen voorwaarde voor Product-markup."
+  ],
+  "kort": "Denk aan een winkel en een consumentenblad. In de winkel vraag je wat bezorgen kost en hoe retourneren werkt, want daar koop je. Het blad kan een product beoordelen en een prijs noemen, maar het verstuurt niets. Google maakt hetzelfde onderscheid. De pagina waar je echt afrekent kan de uitgebreide productweergave krijgen, de reviewpagina een rijker gewoon zoekresultaat.",
+  "begrippen": [
+    {
+      "term": "Product-markup",
+      "uitleg": "code (structured data) die Google vertelt over welk product een pagina gaat."
+    },
+    {
+      "term": "Merchant listing",
+      "uitleg": "een productresultaat voor pagina's waar je het product direct kunt kopen, met details als verzending en retour."
+    },
+    {
+      "term": "Product snippet",
+      "uitleg": "extra productinfo bij een gewoon zoekresultaat, zoals beoordelingen, prijs of beschikbaarheid."
+    },
+    {
+      "term": "Merchant Center",
+      "uitleg": "het account van Google waarin webshops een productfeed aanleveren."
+    }
+  ],
+  "uitleg": "Product-markup levert in Google twee soorten resultaten op. Welke je kunt krijgen, hangt af van wat de pagina doet.\n\n**Merchant listings**\n- Kunnen verschijnen in rijkere productweergaven, bijvoorbeeld op het tabblad Shopping.\n- Ondersteunen meer details: prijs, beschikbaarheid, verzending, retourbeleid, en bijvoorbeeld maten bij kleding.\n\n**Product snippets**\n- Tonen extra informatie bij een gewoon zoekresultaat, zoals beoordelingen, prijs of beschikbaarheid.\n- Ondersteunen voor redactionele reviews ook **voor- en nadelen** (pros en cons).\n\nVoeg je op een webshoppagina de verplichte velden voor merchant listings toe, dan kan die pagina ook product snippets krijgen. Andersom niet.\n\nVoor de reviewblog betekent dit: zet de nadruk op eerlijke, eigen reviews met een duidelijke beoordeling en voor- en nadelen. Verzend- en retourinformatie hoort daar niet thuis; die is van de winkel die verkoopt.\n\nControleer het resultaat altijd met de Rich Results Test en volg het rapport in Search Console.",
+  "kernpunt": "Wil je weten welk productresultaat kan, kijk dan eerst of de bezoeker op die pagina zelf kan afrekenen.",
+  "toepassing": "Test vandaag bij een webshopklant één productpagina in de Rich Results Test. Kijk of 'Merchant listings' en 'Product snippets' allebei geldig zijn en noteer welke aanbevolen velden ontbreken.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Intro to Product structured data on Google | Google Search Central",
+    "url": "https://developers.google.com/search/docs/appearance/structured-data/product"
+  }
+}
