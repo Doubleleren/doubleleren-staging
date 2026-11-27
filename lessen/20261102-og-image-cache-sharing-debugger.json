@@ -1,0 +1,45 @@
+{
+  "id": "20261102-og-image-cache-sharing-debugger",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "OG-tags: een nieuwe deelafbeelding die niet verschijnt",
+  "matrix": ["2.1.11"],
+  "cel": "ecom",
+  "titel": "Nieuwe Black Friday-afbeelding, maar Facebook toont nog de oude",
+  "intro": "Een webwinkel heeft voor de Black Friday-actie een nieuwe deelafbeelding laten maken. De developer heeft het bestand /img/share.jpg op de server overschreven met de nieuwe versie; de og:image-tag is niet veranderd. Wie de actiepagina nu op Facebook deelt, ziet nog steeds de oude afbeelding. De actie start overmorgen.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de beste aanpak?",
+    "opties": [
+      "Wacht een paar dagen: Facebook haalt deelafbeeldingen elke 24 uur opnieuw op, dus de nieuwe versie verschijnt vanzelf.",
+      "Voeg twitter:image toe met dezelfde URL; Facebook gebruikt die tag als die nieuwer is dan og:image.",
+      "Leeg de cache van de CDN en van de browser, zodat Facebook bij de volgende keer delen de nieuwe afbeelding ziet.",
+      "Zet de nieuwe afbeelding op een nieuwe URL en laat hem ophalen via de Sharing Debugger, want Facebook cachet per URL."
+    ],
+    "juist": 3
+  },
+  "kern": "Facebook bewaart het plaatje bij het adres van de afbeelding. Zolang dat adres gelijk blijft, kijkt het niet opnieuw.",
+  "afleiders": [
+    "**Een paar dagen wachten:** Facebook haalt deelafbeeldingen niet vanzelf elke 24 uur opnieuw op. Juist daarom bestaat de Sharing Debugger, en de actie start al overmorgen.",
+    "**twitter:image toevoegen:** die tag is voor X. Facebook kijkt naar og:image, hoe nieuw de andere tag ook is.",
+    "**CDN- en browsercache legen:** dat lijkt logisch bij een oud plaatje, maar het probleem zit in de cache van Facebook zelf. Die hangt aan de URL van de afbeelding.",
+    ""
+  ],
+  "kort": "Je laat bij de fotowinkel een pasfoto afdrukken en die bewaren ze onder jouw klantnummer. Mail je later een nieuwe foto onder hetzelfde nummer, dan drukken ze gewoon de oude af. Die hebben ze immers al. Zo werkt Facebook met deelafbeeldingen: het bewaart een kopie bij het webadres van het plaatje. Blijft dat adres gelijk, dan ziet Facebook geen reden om opnieuw te kijken. Een nieuw adres is voor Facebook wel een nieuwe afbeelding.",
+  "begrippen": [
+    { "term": "og:image", "uitleg": "de tag in de pagina die zegt welke afbeelding een platform toont als iemand de link deelt." },
+    { "term": "Cache", "uitleg": "een opgeslagen kopie, zodat iets niet steeds opnieuw opgehaald hoeft te worden." },
+    { "term": "Sharing Debugger", "uitleg": "een tool van Meta die laat zien wat Facebook van je pagina ziet, en de pagina opnieuw ophaalt." },
+    { "term": "CDN", "uitleg": "een netwerk van servers dat bestanden zoals afbeeldingen dicht bij de bezoeker bewaart." }
+  ],
+  "uitleg": "Een deelpreview op Facebook, LinkedIn of in een chat-app komt uit de **Open Graph-tags** van de pagina. Het platform haalt de pagina op met een eigen crawler, maakt de preview en bewaart die. Meta schrijft dat afbeeldingen worden gecachet op basis van de URL en niet worden bijgewerkt zolang de URL hetzelfde blijft.\n\nDe basis-tags volgens Meta:\n- **og:url**: de canonieke URL, zonder sessie- of trackingparameters\n- **og:title**: de titel, zonder merknaam erachter\n- **og:description**: een korte beschrijving van een paar zinnen\n- **og:image**: de URL van de afbeelding, liefst met **og:image:width** en **og:image:height**, zodat hij al bij de eerste keer delen goed laadt\n\nZo voorkom je dit soort problemen:\n- **Nieuwe afbeelding = nieuwe bestandsnaam** (bijvoorbeeld share-blackfriday.jpg), en pas og:image aan.\n- **Controleer vóór de lancering** met de Sharing Debugger (en de Post Inspector van LinkedIn) wat de crawler ziet.\n- **Per pagina eigen tags**, niet één sitebrede afbeelding.\n\nOG-tags zijn geen rankingfactor in Google, maar bepalen wel hoe aantrekkelijk een gedeelde link eruitziet, en dus hoeveel mensen erop klikken.",
+  "kernpunt": "Verander je een deelafbeelding, geef het bestand dan altijd een nieuwe naam en controleer het resultaat in de Sharing Debugger.",
+  "toepassing": "Haal vóór de volgende actie van een klant de actiepagina door de Sharing Debugger en controleer of titel, beschrijving en afbeelding kloppen.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Sharing for Webmasters | Meta for Developers",
+    "url": "https://developers.facebook.com/docs/sharing/webmasters/"
+  }
+}

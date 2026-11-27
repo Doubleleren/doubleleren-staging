@@ -1,0 +1,52 @@
+{
+  "id": "20261027-breadcrumbs-hierarchie",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "CRO",
+  "onderwerp": "Interne links voor bezoeker én zoekmachine: breadcrumbs",
+  "matrix": [
+    "7.1.2",
+    "1.2.5"
+  ],
+  "cel": "ecom",
+  "titel": "Het kruimelpad toont waar de bezoeker vandaan kwam: goed idee?",
+  "intro": "Een fietsenwinkel test een nieuw kruimelpad boven de productpagina's. De developer heeft het zo gebouwd dat het de laatste drie pagina's toont die de bezoeker bekeek, bijvoorbeeld 'Zoekresultaten > Sale > Gazelle Ultimate'. Op mobiel loopt het pad over drie regels. De laatste kruimel, de huidige pagina, is ook een link.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welk advies geef je over dit kruimelpad?",
+    "opties": [
+      "Laten zo: een pad op basis van de route van de bezoeker is persoonlijker en converteert daardoor beter dan een vaste structuur.",
+      "Toon de plek in de sitestructuur, maak de huidige pagina geen link en houd het op mobiel kort, zodat het pad overzicht geeft.",
+      "Schrap het kruimelpad: op mobiel heeft niemand er iets aan, en Google gebruikt het niet meer.",
+      "Vervang het hoofdmenu door het kruimelpad, zodat er minder links op de pagina staan en de belangrijke links meer waarde krijgen."
+    ],
+    "juist": 1
+  },
+  "kern": "Een kruimelpad laat zien waar het product op de site thuishoort; voor de weg terug heeft de browser al een knop.",
+  "afleiders": [
+    "**Laten zo:** persoonlijk klinkt klantvriendelijk. Maar dan verschilt het pad per bezoeker, zegt het niets over waar het product thuishoort en krijgen zoekmachines geen vaste links naar de categorieën.",
+    "",
+    "**Schrappen:** op mobiel is ruimte krap, dus dat lijkt logisch. Maar een kort pad helpt nog steeds, en Google gebruikt BreadcrumbList-markup nog om pagina's in de zoekresultaten in te delen.",
+    "**Hoofdmenu vervangen:** minder links lijkt sterker. Maar een kruimelpad vult de navigatie aan en vervangt hem nooit."
+  ],
+  "kort": "Denk aan de bordjes in een supermarkt: 'Zuivel > Kaas > Belegen'. Die vertellen waar je staat, niet door welke gangpaden je eerst liep. Daardoor ziet elke klant hetzelfde bordje en vind je snel de bredere afdeling terug. Een kruimelpad werkt zo: het toont de vaste plek op de site. De huidige pagina is geen link, want daar sta je al.",
+  "begrippen": [
+    {
+      "term": "Kruimelpad",
+      "uitleg": "het rijtje links boven een pagina dat laat zien waar die pagina op de site staat (breadcrumb)."
+    },
+    {
+      "term": "BreadcrumbList-markup",
+      "uitleg": "code die Google vertelt hoe het kruimelpad van een pagina eruitziet."
+    }
+  ],
+  "uitleg": "Kruimelpaden zijn een klein onderdeel waar UX en SEO elkaar raken. Voor de bezoeker zijn ze een tweede vorm van navigatie: je ziet in één oogopslag waar je bent en springt met één klik naar een bredere categorie. Voor zoekmachines zijn het interne links met duidelijke ankertekst naar categoriepagina's, op elke productpagina.\n\nRichtlijnen van Nielsen Norman Group:\n- **Begin met de homepage** en **eindig met de huidige pagina**, zonder link en visueel anders.\n- Staat een product in meerdere categorieën, toon dan één **vaste route**.\n- Link alleen naar categorieën die echt een eigen pagina hebben.\n- Een platte site van één of twee niveaus heeft geen kruimelpad nodig.\n- **Op mobiel:** geen pad dat over meerdere regels loopt, geen te kleine tikdoelen, en overweeg alleen het laatste niveau of twee te tonen.\n\nVoor SEO komt daar BreadcrumbList-markup bij, die overeen moet komen met het zichtbare pad. Google gebruikt die om pagina's in de zoekresultaten in te delen; op desktop zie je dat als kruimelpad.",
+  "kernpunt": "Staat een product in meerdere categorieën, kies dan één vaste route voor het kruimelpad en laat de markup daarmee overeenkomen.",
+  "toepassing": "Bekijk vandaag op je telefoon drie productpagina's van een webshopklant. Loopt het kruimelpad over meerdere regels, en wijst het naar categorieën met een eigen pagina?",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Breadcrumbs: 11 Design Guidelines for Desktop and Mobile | Nielsen Norman Group",
+    "url": "https://www.nngroup.com/articles/breadcrumbs/"
+  }
+}

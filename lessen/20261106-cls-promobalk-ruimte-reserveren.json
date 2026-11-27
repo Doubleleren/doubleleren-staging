@@ -1,0 +1,49 @@
+{
+  "id": "20261106-cls-promobalk-ruimte-reserveren",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Core Web Vitals: CLS verbeteren bij een balk die later verschijnt",
+  "matrix": ["5.2.7", "5.2.6"],
+  "cel": "ecom",
+  "titel": "De promobalk duwt de koopknop weg: hoe los je dat op?",
+  "intro": "Een webshop in tuinmeubelen heeft volgens Search Console een CLS van 0,24 op mobiel. CLS (Cumulative Layout Shift) meet hoeveel de inhoud verspringt terwijl je kijkt. Bij het openen van een productpagina verschijnt na een seconde bovenaan een balk met 'Gratis bezorging vanaf € 50'. Productfoto en koopknop schuiven dan een stuk naar beneden. Lighthouse geeft dezelfde pagina een CLS van 0,02.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de beste oplossing voor dit verspringen?",
+    "opties": [
+      "De balk via JavaScript pas laden als de rest klaar is, want dan staat de productfoto al in beeld als de balk verschijnt.",
+      "Alle afbeeldingen een vaste breedte en hoogte geven, want ontbrekende afmetingen zijn de bekendste oorzaak van CLS.",
+      "Vooraf ruimte voor de balk vrijhouden met een vaste hoogte, want dan schuift er niets op als de tekst binnenkomt.",
+      "De CLS van Search Console laten voor wat hij is, want Lighthouse meet op dezelfde pagina een goede score van 0,02."
+    ],
+    "juist": 2
+  },
+  "kern": "Het verspringen komt doordat de balk geen eigen plek heeft. Krijgt hij die vooraf, dan verschijnt de tekst in ruimte die er al was.",
+  "afleiders": [
+    "**Later laden:** dan staat de foto inderdaad eerder in beeld. Maar de balk duwt de inhoud nog steeds weg, alleen op een later moment.",
+    "**Afmetingen bij afbeeldingen:** dat is de bekendste oorzaak van CLS en dus verstandig. Maar hier is de balk de oorzaak, niet de foto's.",
+    "",
+    "**Lighthouse volgen:** een testscore van 0,02 klinkt geruststellend. Maar Lighthouse meet alleen het laden in een testomgeving, en Search Console meet echte bezoekers over hun hele bezoek."
+  ],
+  "kort": "Stel dat je in de bioscoop zit en er komt nog iemand bij terwijl de film al loopt. Er is geen stoel vrij, dus de hele rij schuift een plek op. Had je vooraf een stoel vrijgehouden, dan was hij er zonder gedoe bij gaan zitten. Zo werkt het met een balk die later binnenkomt: zonder vrije ruimte schuift alles eronder op. Echte bezoekers merken dat, ook als een test het niet ziet.",
+  "begrippen": [
+    { "term": "Velddata", "uitleg": "metingen bij echte bezoekers, zoals Search Console die toont." },
+    { "term": "Lighthouse", "uitleg": "een test die je zelf draait en die alleen het laden van de pagina meet, in een testomgeving." },
+    { "term": "min-height", "uitleg": "een CSS-regel die een blok een vaste minimale hoogte geeft, ook als de inhoud er nog niet is." }
+  ],
+  "uitleg": "CLS is goed bij **0,1 of lager**, gemeten bij 75% van de bezoeken. De bekendste oorzaken en oplossingen volgens web.dev:\n\n- **Afbeeldingen en video's zonder afmetingen:** zet width en height, of aspect-ratio in de CSS.\n- **Advertenties, embeds en balken die later laden:** reserveer ruimte met min-height. Laat die ruimte niet inklappen als er niets komt.\n- **Inhoud boven bestaande inhoud invoegen:** hoe hoger op het scherm, hoe erger. Kan het niet anders, zet het dan lager of als overlay over de pagina heen.\n- **Webfonts:** een vervangend lettertype met andere maten laat tekst verspringen. Kies een lettertype dat erop lijkt en laad belangrijke fonts vooraf.\n- **Animaties:** gebruik transform in plaats van top of left.\n\nVerschuivingen binnen 0,5 seconde na een klik of tik tellen niet mee. Een menu dat openklapt na een klik is dus geen probleem.",
+  "kernpunt": "Is CLS in het veld slecht maar in Lighthouse goed, zoek dan eerst naar iets wat pas na het laden verschijnt.",
+  "toepassing": "Open vandaag een productpagina van een klant op je telefoon en kijk of er na het laden nog een balk, banner of melding bovenaan verschijnt. Zo ja, vraag de developer om daar vooraf ruimte voor te reserveren.",
+  "herzien": "2026-11-10",
+  "wijziging": "Kennisvideo toegevoegd.",
+  "bron": {
+    "titel": "Optimize Cumulative Layout Shift | web.dev",
+    "url": "https://web.dev/articles/optimize-cls"
+  },
+  "video": {
+    "titel": "Core Web Vitals Explained: How To Fix Site Optimization Issues",
+    "kanaal": "Matt Diggity",
+    "url": "https://www.youtube.com/watch?v=_FpAvQkjlco"
+  }
+}

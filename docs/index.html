@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.github.com/repos/doubleleren/ https://raw.githubusercontent.com/doubleleren/ https://*.green-feather-b83e.workers.dev; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'">
+<title>DoubleLeren</title>
+<style>
+:root {
+  color-scheme: light;
+  --smart: #C4A8E0; --smart-50: #E1D3EF; --smart-20: #F8F6FD; --smart-ink: #6B4E9B;
+  --fun: #CEFF69; --fun-50: #E7FCBE; --open: #C6DDEF; --open-50: #E2EDF6; --cosy: #FFDFD6; --cosy-50: #FFEEEA;
+  --cool: #EAEAEA; --cool-50: #F4F4F4; --ink: #000; --ink-soft: #313131; --muted: #5c5c5c; --white: #fff;
+  --goed: #8DB600; --deels: #E3A33B; --fout: #D9614A;
+  --font: "Gellix", "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --r-sm: 12px; --r-pill: 999px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--smart-20); color: var(--ink); font: 400 15px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 24px; padding-block: 0 64px; }
+h1, h2, h3 { letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+a { color: var(--ink); text-underline-offset: 3px; }
+button, input { font: inherit; }
+:focus-visible { outline: 2px solid var(--smart-ink); outline-offset: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+[hidden] { display: none !important; }
+
+.testband { background: var(--fun); color: var(--ink); font-size: 14px; }
+.testband .wrap { padding-block: 10px; }
+.kop { background: var(--smart); }
+.kop .wrap { padding-block: 32px 40px; display: grid; gap: 16px; }
+.merk { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: space-between; }
+.merk h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.05; font-weight: 700; }
+.merk h1 span { font-weight: 400; }
+.pill { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 4px 14px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: var(--fun); white-space: nowrap; }
+.wie { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+.knop { border: 0; border-radius: var(--r-pill); padding: 8px 16px; background: var(--white); color: var(--ink); cursor: pointer; font-weight: 600; font-size: 14px; }
+.knop.zwart { background: var(--ink); color: var(--white); }
+.knop.fun { background: var(--fun); }
+.knop[disabled] { opacity: .5; cursor: default; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs button { border: 0; border-radius: var(--r-pill); padding: 8px 16px; background: rgba(255,255,255,.6); cursor: pointer; font-weight: 600; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--white); }
+.subtabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1.6px solid var(--cool); margin: 0 0 16px; }
+.subtabs button { border: 0; background: none; padding: 10px 14px; margin-bottom: -1.6px; border-bottom: 3px solid transparent; cursor: pointer; font-weight: 600; color: var(--muted); font-size: 15px; }
+.subtabs button:hover { color: var(--ink); }
+.subtabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.inst-sub > .paneel + .paneel { margin-top: 16px; }
+.inst-kop { font-size: 26px; margin: 4px 0 12px; }
+#start-paneel { margin-bottom: 18px; }
+
+.paneel { background: var(--white); border: 1.6px solid var(--cool); border-radius: var(--r-sm); padding: 22px 24px; min-width: 0; }
+.paneel h2 { font-size: 22px; font-weight: 700; line-height: 1.2; }
+.sub { color: var(--muted); font-size: 14px; margin: 4px 0 0; }
+.paneel-kop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+section { margin-top: 24px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: -24px; position: relative; }
+.kpi { background: var(--white); border: 1.6px solid var(--cool); border-radius: var(--r-sm); padding: 18px 20px; display: grid; gap: 4px; align-content: start; }
+.kpi .label { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.kpi .waarde { font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.kpi .waarde small { font-size: 18px; font-weight: 500; letter-spacing: 0; }
+.kpi .toel { font-size: 13px; color: var(--muted); }
+.kpi.accent { background: var(--fun); border-color: var(--fun); }
+.kpi.accent .label, .kpi.accent .toel { color: var(--ink-soft); }
+.twee { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.stapel { display: grid; gap: 24px; }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; border-radius: var(--r-pill); padding: 2px 10px; white-space: nowrap; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.chip.goed { background: var(--fun-50); } .chip.goed i { background: var(--goed); }
+.chip.deels { background: #FCEBCB; } .chip.deels i { background: var(--deels); }
+.chip.fout { background: var(--cosy); } .chip.fout i { background: var(--fout); }
+.chip.bevestigd { background: var(--fun-50); } .chip.overschat { background: #FCEBCB; } .chip.onderschat { background: var(--open-50); } .chip.groeit { background: var(--smart-50); }
+.tag { display: inline-block; font-size: 12px; font-weight: 600; border-radius: var(--r-pill); padding: 2px 10px; background: var(--open-50); white-space: nowrap; }
+
+.rij { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 9px 0; border-top: 1px solid var(--cool); align-items: center; font-size: 14px; }
+.rij:first-child { border-top: 0; }
+.leeg { color: var(--muted); font-size: 14px; margin: 0; }
+
+.mx-groep + .mx-groep { margin-top: 16px; }
+.mx-groep h3 { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+details.mx { border-top: 1px solid var(--cool); }
+details.mx summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) minmax(100px, 38%) 40px; gap: 14px; align-items: center; padding: 9px 0; }
+details.mx summary::-webkit-details-marker { display: none; }
+.mx-naam { font-weight: 500; display: flex; gap: 8px; align-items: center; min-width: 0; overflow-wrap: anywhere; }
+.pijl { width: 8px; height: 8px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(-45deg); flex: none; transition: transform .15s; }
+details[open] > summary .pijl { transform: rotate(45deg); }
+details.mx-vak { border: 1px solid var(--cool); border-radius: 14px; padding: 0 16px; }
+details.mx-vak + details.mx-vak { margin-top: 10px; }
+details.mx-vak > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto 40px; gap: 14px; align-items: center; padding: 14px 0; font-size: 17px; font-weight: 600; }
+details.mx-vak > summary::-webkit-details-marker { display: none; }
+.mx-vak-inhoud { padding-bottom: 14px; }
+.balk { position: relative; height: 10px; background: var(--cool-50); border-radius: 5px; }
+.balk i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--smart-ink); border-radius: 0 5px 5px 0; }
+.balk b { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
+.mx-score { text-align: right; font-weight: 700; }
+.mx-items { padding: 4px 0 12px 16px; display: grid; gap: 6px; }
+.mx-item { display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; gap: 10px; font-size: 14px; align-items: baseline; }
+.mx-item .id { color: var(--muted); font-size: 12px; }
+.mx-item .noot { display: block; color: var(--muted); font-size: 12.5px; }
+
+.kal-box { overflow-x: auto; }
+.kal { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 13px); gap: 3px; width: max-content; }
+.kal div, .kal button { display: block; width: 13px; height: 13px; border-radius: 3px; background: var(--cool-50); border: 0; padding: 0; }
+.kal .gedaan { background: var(--smart); cursor: pointer; }
+.kal .gedaan.twee { background: var(--smart-ink); }
+.kal-legenda { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.kal-legenda i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; background: var(--cool-50); }
+.kal-legenda i.een { background: var(--smart); margin-left: 8px; }
+.kal-legenda i.twee { background: var(--smart-ink); margin-left: 8px; }
+.kal button.gedaan:hover { outline: 2px solid var(--ink); outline-offset: 0; }
+.kal .vandaag { outline: 2px solid var(--ink); outline-offset: -1px; }
+.kal div.buiten { visibility: hidden; }
+.leslink { border: 0; background: none; padding: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; text-decoration: underline; text-decoration-color: var(--smart); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.leslink:hover { text-decoration-color: var(--ink); }
+details.sig { border-top: 1px solid var(--cool); }
+details.sig:first-child { border-top: 0; }
+details.sig > summary { list-style: none; cursor: pointer; border-top: 0; }
+details.sig > summary::-webkit-details-marker { display: none; }
+details.sig > summary:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.sig-lessen { padding: 0 0 12px 12px; display: grid; gap: 6px; font-size: 14px; }
+.sig-les { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; }
+.banner { display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap; background: var(--fun-50); border: 1.6px solid var(--fun); border-radius: var(--r-sm); padding: 12px 16px; font-size: 15px; }
+.banner.laat { background: var(--cosy-50); border-color: var(--fout); }
+.mx-rij { display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 6px 0; border-top: 1px solid var(--cool); font-size: 14px; }
+.mx-rij:first-child { border-top: 0; }
+.mx-rij .id { color: var(--muted); font-size: 12px; }
+.mx-rij .noot { display: block; color: var(--muted); font-size: 12.5px; }
+.mx-context { font-size: 12.5px; color: var(--muted); padding-top: 8px; }
+details.skill-uitleg { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+details.skill-uitleg > summary { cursor: pointer; width: fit-content; }
+details.skill-uitleg ul { margin: 4px 0 2px; padding-left: 18px; }
+details.skill-uitleg li { margin: 2px 0; }
+.prio-keuze { display: inline-flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.prio-keuze .knop { background: var(--cool-50); padding: 5px 12px; font-size: 13px; }
+.prio-keuze .knop[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+#vakken-paneel[hidden] + .paneel { margin-top: 0; }
+.start { margin-top: 0; background: var(--fun-50); border-color: var(--fun); }
+#start-paneel:not([hidden]) + #vakken-paneel { margin-top: 24px !important; }
+#instellingen-knop { display: inline-flex; align-items: center; gap: 6px; }
+#instellingen-knop[aria-current="page"] { box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--ink); }
+#sb-instelling[hidden] + #snelkoppeling { margin-top: 24px; }
+#mx-vakkeuze, #mx-modus { justify-content: flex-start; display: flex; }
+.maand { padding: 0; overflow: hidden; margin: -24px 0 16px; position: relative; }
+#maand-paneel:not([hidden]) + .kpis { margin-top: 0; }
+.maand-kop { background: var(--fun); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.maand-kop h2 { margin-top: 2px; }
+.maand-kop .knop { background: var(--white); }
+.maand-body { padding: 18px 24px 20px; display: grid; gap: 20px; }
+.maand-body h3 { font-size: 15px; margin-bottom: 6px; }
+.maand-cijfers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.maand-cijfers > div { background: var(--cool-50); border-radius: 12px; padding: 10px 14px; display: grid; }
+.maand-cijfers b { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.maand-cijfers span { font-size: 13px; color: var(--muted); }
+.maand-twee { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.maand-lijst { list-style: none; margin: 0; padding: 0; }
+.maand-lijst li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px solid var(--cool); }
+.maand-sugg { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--cool); }
+.maand-pijl { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; }
+.maand-pijl.op { background: var(--fun-50); } .maand-pijl.neer { background: var(--cosy-50); }
+.maand-knoppen { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.maand-knoppen .knop:not(.zwart) { background: var(--cool-50); }
+@media (max-width: 620px) { .maand-twee { grid-template-columns: minmax(0, 1fr); } .maand-sugg { grid-template-columns: 32px minmax(0, 1fr); } .maand-knoppen { grid-column: 2; justify-content: flex-start; } }
+.mx-onderwerp { margin: 10px 0 14px; }
+.mx-onderwerp h4 { font-size: 15px; font-weight: 700; margin: 0 0 2px; padding-top: 8px; border-top: 1.6px solid var(--cool); }
+.score-veld { width: 46px; height: 38px; text-align: center; font: 700 18px var(--font); border: 1.6px solid var(--cool); border-radius: 8px; background: var(--white); }
+.score-veld:focus { outline: none; border-color: var(--ink); background: var(--fun-50); }
+.score-veld.mist { border-color: var(--fout); background: var(--cosy-50); }
+.mx-sticky { position: sticky; bottom: 0; background: var(--white); border-top: 1.6px solid var(--cool); padding: 10px 0 2px; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.mx-sticky .les-knoppen { margin-top: 0; }
+.optie.stil { cursor: default; }
+#ld-inhoud .opties { margin-bottom: 14px; }
+details.spoiler { margin-top: 12px; }
+details.spoiler > summary { cursor: pointer; color: var(--smart-ink); font-weight: 600; margin-bottom: 10px; }
+.optie.juist { border-color: var(--goed); background: var(--fun-50); }
+.schakel { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+tr.ik td { background: var(--fun-50); }
+.sb-kies { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sb-kies .veld { width: auto; padding: 8px 14px; font-size: 15px; }
+.sb-kies .knop { background: var(--cool-50); }
+
+.les { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid var(--cool); }
+.les:first-child { border-top: 0; padding-top: 0; }
+.les .datum { font-size: 13px; color: var(--muted); }
+.les h3 { font-size: 16px; font-weight: 600; line-height: 1.3; }
+.les .meta { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+.les p { margin: 0; max-width: 72ch; }
+.les .bron { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.bron.video { margin-top: 4px; }
+.bron.video a { font-weight: 600; }
+.les details { margin-top: 6px; font-size: 14px; }
+.les details summary { cursor: pointer; color: var(--smart-ink); font-weight: 600; }
+.les blockquote { margin: 6px 0 0; padding: 8px 12px; background: var(--cool-50); border-radius: 8px; white-space: pre-wrap; }
+
+.veld { width: 100%; padding: 11px 16px; border: 1.6px solid var(--cool); border-radius: var(--r-pill); background: var(--white); font-size: 16px; }
+.tabel { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th { text-align: left; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 0 10px 8px 0; border-bottom: 1.6px solid var(--cool); }
+td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--cool); }
+td.r, th.r { text-align: right; }
+.hm { border-collapse: separate; border-spacing: 3px; table-layout: fixed; min-width: 640px; }
+.hm th { border: 0; font-size: 11px; padding: 0 2px 4px; vertical-align: bottom; overflow-wrap: anywhere; text-transform: none; letter-spacing: 0; font-weight: 600; }
+.hm td { text-align: center; border: 0; border-radius: 5px; padding: 7px 0; font-weight: 600; font-size: 13px; }
+.hm td.naam { text-align: left; font-weight: 600; padding-left: 4px; }
+.hm td.naam button { border: 0; background: none; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+.login { max-width: 460px; margin: 40px auto 0; }
+.login .paneel { display: grid; gap: 14px; }
+.fout { color: #B42318; font-size: 14px; }
+.fout:empty { display: none; }
+.stappen { display: grid; gap: 14px; }
+.code-groot { margin: 0; padding: 16px; background: var(--fun-50); border-radius: var(--r-sm); font-size: 22px; font-weight: 700; letter-spacing: .01em; line-height: 1.4; overflow-wrap: anywhere; }
+.controle { display: block; margin: 6px 0; padding: 8px 12px; background: var(--open-50); border-radius: 8px; font-weight: 700; }
+.stappen-lijst { margin: 0; padding-left: 20px; display: grid; gap: 10px; font-size: 14px; }
+kbd, code { font: 600 13px/1.4 ui-monospace, Consolas, monospace; background: var(--cool-50); border: 1px solid var(--cool); border-radius: 6px; padding: 1px 6px; }
+.les-kaart { max-width: 820px; }
+.les-kaart h2 { font-size: 26px; margin-top: 10px; }
+.les-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.les-meta .pill { text-transform: none; letter-spacing: 0; }
+.les-tekst { margin-top: 18px; font-size: 16px; line-height: 1.6; max-width: 72ch; }
+.les-tekst p { margin: 0 0 12px; }
+.les-tekst ul { margin: 0 0 12px; padding-left: 22px; }
+.les-label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--smart-ink); margin: 18px 0 6px; }
+.les-label:first-child { margin-top: 0; }
+.zacht { color: var(--ink-soft); }
+.vraag { font-weight: 600; }
+.kader { border-left: 3px solid var(--cool); background: var(--cool-50); border-radius: 8px; padding: 12px 16px 2px; margin: 6px 0 14px; }
+.kader-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.kader.goed { background: var(--fun-50); border-color: var(--goed); }
+.kader.fout { background: var(--cosy-50); border-color: var(--fout); }
+.kader.model { background: var(--smart-20); border-color: var(--smart-ink); }
+.kader.onthoud { background: #FFF6E0; border-color: var(--deels); }
+.kader.probeer { background: var(--open-50); border-color: #5B8DB8; }
+.kader.simpel { background: var(--fun-50); border-color: var(--fun); font-size: 17px; }
+.kader.begrippen { font-size: 14px; }
+.meer-uitleg { margin: 4px 0 14px; }
+.meer-uitleg > summary { cursor: pointer; font-weight: 600; padding: 6px 0; color: var(--smart-ink, inherit); }
+.opties { display: grid; gap: 8px; margin-top: 8px; }
+.optie { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 14px; border: 1.6px solid var(--cool); border-radius: var(--r-sm); cursor: pointer; }
+.optie:has(input:checked) { border-color: var(--ink); background: var(--smart-20); }
+.optie input { margin-top: 5px; }
+.antwoord { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border: 1.6px solid var(--cool); border-radius: var(--r-sm); resize: vertical; margin-top: 8px; }
+.zelf { display: flex; gap: 8px; flex-wrap: wrap; }
+.zelf .knop { background: var(--cool-50); }
+.zelf .knop[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.reactie-kaart { display: grid; gap: 8px; margin-top: 22px; padding: 16px 18px; border-radius: var(--r-sm); background: var(--smart-50); }
+.reactie-kaart > b { font-size: 16px; }
+.reactie-kaart > .zelf + b { margin-top: 10px; }
+.reactie-kaart .zelf .knop:not([aria-pressed="true"]) { background: var(--white); }
+.reactie-kaart p.sub { margin: 4px 0 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.reactie-kaart p.sub .knop { background: var(--white); }
+.les-knoppen { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap; }
+.les-knoppen .knop { padding: 10px 20px; font-size: 15px; }
+.velden-rij { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.veld-label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+#m-mk .optie { align-items: center; }
+#m-mk .optie input[type="radio"] { margin-top: 0; }
+.legenda { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+.legenda span { display: inline-flex; gap: 6px; align-items: center; }
+.sw { width: 16px; height: 8px; border-radius: 4px; background: var(--smart-ink); display: inline-block; }
+.sw.tick { width: 2px; height: 14px; background: var(--ink); border-radius: 1px; }
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--white); font-size: 13px; padding: 6px 10px; border-radius: 8px; max-width: 300px; z-index: 10; }
+footer { margin-top: 32px; font-size: 13px; color: var(--muted); }
+@media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .twee { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .wrap { padding-inline: 16px; } .kpi .waarde { font-size: 30px; } .les { grid-template-columns: minmax(0, 1fr); gap: 4px; } details.mx summary { grid-template-columns: minmax(0, 1fr) 70px 36px; } .mx-rij { grid-template-columns: 34px minmax(0, 1fr) auto; } .sig-les { grid-template-columns: minmax(0, 1fr) auto; } .sig-les .datum-k { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="testband" id="testband" role="note" hidden><div class="wrap"><strong>Testversie (staging).</strong> Testdata en aparte testaccounts; niets hiervan komt in de live versie. De pop-up hoort bij de live versie en test hier niet mee.</div></div>
+<header class="kop">
+  <div class="wrap">
+    <div class="merk">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><h1>double<span>leren</span></h1><span class="pill" id="vak" hidden></span></div>
+      <div class="wie" id="wie" hidden><span id="wie-naam"></span><button class="knop fun" id="feedback-knop" type="button">Geef feedback</button><button class="knop zwart" id="instellingen-knop" type="button" aria-label="Instellingen" title="Instellingen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Instellingen</span></button><button class="knop" id="uitloggen" type="button">Uitloggen</button></div>
+    </div>
+    <div class="tabs" id="tabs" role="tablist" hidden>
+      <button type="button" role="tab" data-tab="vandaag" aria-selected="false" id="tab-vandaag" hidden>Les van vandaag</button>
+      <button type="button" role="tab" data-tab="mij" aria-selected="true">Mijn voortgang</button>
+      <button type="button" role="tab" data-tab="scorebord" aria-selected="false" id="tab-scorebord" hidden>Scorebord</button>
+      <button type="button" role="tab" data-tab="team" aria-selected="false" id="tab-team" hidden>Mijn team</button>
+      <button type="button" role="tab" data-tab="kennisbank" aria-selected="false">Kennisbank</button>
+      <button type="button" role="tab" data-tab="maken" aria-selected="false" id="tab-maken" hidden>Les toevoegen</button>
+      <button type="button" role="tab" data-tab="uitnodigen" aria-selected="false" id="tab-uitnodigen" hidden>Collega uitnodigen</button>
+    </div>
+    <div class="banner" id="ronde-banner" role="status" hidden></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="login" id="login">
+    <form class="paneel" id="login-form" autocomplete="off">
+      <h2>Inloggen</h2>
+      <p class="sub" style="margin:0">Met je uitnodigingscode (uit het Teams-bericht) en je persoonlijke code van zes woorden uit je wachtwoordkluis.</p>
+      <div id="uitnodiging-rij" style="display:grid;gap:8px">
+        <label for="uitnodiging" class="sub" style="margin:0">Uitnodigingscode</label>
+        <input id="uitnodiging" class="veld" type="password" autocomplete="off" spellcheck="false" placeholder="lid-xxxxxx:…">
+      </div>
+      <p id="vergeet-rij" class="sub" style="margin:0" hidden>Uitnodigingscode is onthouden op deze computer. <button type="button" id="vergeet" class="knop" style="padding:2px 10px;font-size:13px;background:var(--cool-50)">Vergeten</button></p>
+      <label for="code" class="sub" style="margin:0">Je code van zes woorden</label>
+      <input id="code" class="veld" type="password" autocomplete="off" spellcheck="false" placeholder="woord-woord-woord-woord-woord-woord">
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:14px"><input type="checkbox" id="onthoud" style="margin-top:4px"> <span>Onthoud mij 30 dagen op deze computer, zodat DoubleLeren elke ochtend meteen opent (niet op een gedeelde computer)</span></label>
+      <button class="knop zwart" type="submit" id="login-knop">Inloggen</button>
+      <p class="fout" id="login-fout" role="alert"></p>
+      <p class="sub" style="margin:0">Je gegevens staan versleuteld en ondertekend in privé-opslag. Je code ontgrendelt ze alleen hier in je browser; hij wordt nergens naartoe gestuurd en nergens bewaard. Met "Onthoud mij" bewaart deze browser je sleutel afgeschermd, tot je uitlogt.</p>
+      <p class="sub" style="margin:0">Nieuw of code kwijt? <a href="#welkom" id="naar-welkom">Aanmelden</a></p>
+    </form>
+  </div>
+
+  <div class="login" id="welkom" hidden>
+    <div class="paneel">
+      <div id="w-stap1" class="stappen">
+        <h2>Aanmelden bij DoubleLeren</h2>
+        <p class="sub" style="margin:0">Je hebt van de beheerder een uitnodigingscode gekregen in Teams. Plak die hieronder.</p>
+        <label for="w-uitnodiging" class="sub" style="margin:0">Uitnodigingscode</label>
+        <input id="w-uitnodiging" class="veld" type="password" autocomplete="off" spellcheck="false" placeholder="lid-xxxxxx:…">
+        <label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="w-onthoud" checked> Onthoud de uitnodigingscode op deze computer (niet op een gedeelde computer)</label>
+        <button class="knop zwart" type="button" id="w-verder">Verder</button>
+        <p class="sub" style="margin:0"><a href="#" id="w-terug">Terug naar inloggen</a></p>
+      </div>
+
+      <div id="w-stap2" class="stappen" hidden>
+        <h2 id="w-hallo">Welkom!</h2>
+        <p class="sub" style="margin:0" id="w-uitleg"></p>
+        <div id="w-naam-rij" class="stappen">
+          <label for="w-naam" class="sub" style="margin:0">Je naam</label>
+          <input id="w-naam" class="veld" type="text" autocomplete="name" maxlength="80">
+        </div>
+        <div id="w-xlsx-rij" class="stappen">
+          <label for="w-xlsx" class="sub" style="margin:0">Je ingevulde skilllijst (Excel, .xlsx), optioneel</label>
+          <input id="w-xlsx" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+          <p class="sub" style="margin:0" id="w-xlsx-info"></p>
+          <p class="sub" style="margin:0">Het bestand wordt hier in je browser gelezen en versleuteld; het onversleutelde bestand gaat nergens naartoe.</p>
+        </div>
+        <label id="w-lessen-rij" style="display:flex;gap:8px;align-items:center;font-size:14px" hidden><input type="checkbox" id="w-lessen"> Ik wil ook dagelijkse lessen krijgen (vrijblijvend)</label>
+        <button class="knop zwart" type="button" id="w-maak">Account aanmaken</button>
+      </div>
+
+      <div id="w-stap3" class="stappen" hidden>
+        <h2>Je persoonlijke code</h2>
+        <p class="code-groot num" id="w-code"></p>
+        <button class="knop" type="button" id="w-kopieer" style="justify-self:start;background:var(--cool-50)">Kopieer code</button>
+        <ol class="stappen-lijst">
+          <li><strong>Zet deze code nu in je wachtwoordkluis.</strong> Hij wordt maar één keer getoond. Niemand anders heeft hem, ook de beheerder niet.</li>
+          <li id="w-controle-stap" hidden><strong>Stuur deze zes controlewoorden in Teams naar de beheerder:</strong><span class="controle" id="w-controle"></span>Omdat je een nieuwe code aanvraagt, controleert de beheerder zo dat het echt jouw aanvraag is.</li>
+          <li id="w-auto-stap">Je account wordt vanzelf geactiveerd, meestal binnen een paar minuten. Daarna log je in met je uitnodigingscode en deze code.</li>
+        </ol>
+        <label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="w-bewaard"> Ik heb mijn code veilig bewaard</label>
+        <button class="knop zwart" type="button" id="w-klaar" disabled>Klaar</button>
+      </div>
+
+      <div id="w-bestaand" class="stappen" hidden>
+        <h2>Je bent al aangemeld</h2>
+        <p class="sub" style="margin:0">Log in met je code van zes woorden. Ben je je code kwijt? Maak dan een nieuwe aan. Je scores en voortgang blijven bewaard; je eigen antwoorden op open vragen niet.</p>
+        <button class="knop zwart" type="button" id="w-naar-login">Naar inloggen</button>
+        <button class="knop" type="button" id="w-herstel" style="background:var(--cool-50)">Code kwijt: nieuwe code aanmaken</button>
+      </div>
+
+      <div id="w-wacht" class="stappen" hidden>
+        <h2>Wacht op goedkeuring</h2>
+        <p class="sub" style="margin:0" id="w-wacht-auto">Je aanmelding staat klaar en wordt vanzelf geactiveerd, meestal binnen een paar minuten. Probeer het daarna opnieuw.</p>
+        <div id="w-wacht-herstel" hidden>
+          <p class="sub" style="margin:0">Je nieuwe code staat klaar. Heb je de controlewoorden al in Teams naar de beheerder gestuurd? Ze zijn:</p>
+          <span class="controle" id="w-wacht-woorden"></span>
+        </div>
+        <p class="sub" style="margin:0">Code kwijt voordat je bent goedgekeurd? Begin dan gewoon opnieuw; de oude aanmelding wordt vervangen.</p>
+        <button class="knop" type="button" id="w-opnieuw" style="background:var(--cool-50)">Opnieuw beginnen</button>
+      </div>
+
+      <p class="fout" id="w-fout" role="alert"></p>
+    </div>
+  </div>
+
+  <div id="vandaag" hidden>
+    <section class="paneel les-kaart" style="margin-top:0">
+      <div id="les-kop"></div>
+      <div id="les-inhoud" class="les-tekst"></div>
+      <div id="les-knoppen" class="les-knoppen"></div>
+      <p class="fout" id="les-fout" role="alert"></p>
+      <p class="sub" id="snel-hint" hidden>Elke dag vanzelf je les? Zet de pop-up of een snelkoppeling aan bij <button type="button" class="leslink" data-sub-naar="dagelijks">Instellingen</button>.</p>
+    </section>
+  </div>
+
+  <div id="mij" hidden>
+    <section class="paneel maand" id="maand-paneel" hidden></section>
+    <div class="kpis" id="kpis"></div>
+    <section class="twee">
+      <div class="stapel">
+        <div class="paneel"><div class="paneel-kop"><div><h2>Wat gaat goed, wat minder</h2><p class="sub">Je eigen score naast je resultaten op de lessen die erover gingen. Klik op een vaardigheid voor de lessen.</p></div></div><div id="signalen"></div></div>
+        <div class="paneel"><div class="paneel-kop"><div><h2>Activiteit</h2><p class="sub" id="kal-sub"></p></div></div><div class="kal-box"><div class="kal" id="kal"></div></div><div class="kal-legenda" aria-hidden="true"><i></i>geen les <i class="een"></i>1 les <i class="twee"></i>2 lessen</div><p class="sub">Klik op een gekleurd vakje om de lessen van die dag terug te lezen.</p></div>
+      </div>
+      <div class="stapel">
+        <div class="paneel"><div class="paneel-kop"><div><h2>Recent geleerd</h2><p class="sub">Je laatste drie lessen, met het kernpunt en je eigen antwoord (alleen voor jou). Klik op een les voor de volledige uitleg; alle lessen staan in de kennisbank.</p></div></div><div id="recent"></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="instellingen" hidden>
+    <h2 class="inst-kop">Instellingen</h2>
+    <section class="paneel start" id="start-paneel" hidden>
+      <h2>Welkom<span id="start-naam"></span>!</h2>
+      <p>Zet eerst even alles goed, dan passen je lessen meteen bij jou. Loop de onderdelen hieronder langs:</p>
+      <ol class="stappen-lijst">
+        <li><button type="button" class="leslink" data-sub-naar="leren">Wat ik leer</button>: <span id="start-leren">je eigen vak staat al aan; zet er gerust een ander vak bij.</span></li>
+        <li><button type="button" class="leslink" data-sub-naar="werkdagen">Werkdagen</button>: werk je parttime, zet dan je vrije dagen uit.</li>
+        <li><button type="button" class="leslink" data-sub-naar="dagelijks">Dagelijkse les</button>: installeer de pop-up (Windows) of maak een snelkoppeling.</li>
+        <li><button type="button" class="leslink" data-sub-naar="scorebord">Scorebord</button>: kies of je erop wilt staan.</li>
+      </ol>
+      <div class="les-knoppen" style="justify-content:flex-start"><button type="button" class="knop zwart" id="start-klaar">Klaar, naar mijn eerste les →</button></div>
+      <p class="sub" id="start-status" role="status"></p>
+    </section>
+    <div class="subtabs" id="inst-tabs" role="tablist" aria-label="Instellingen">
+      <button type="button" role="tab" data-sub="leren" aria-selected="true">Wat ik leer</button>
+      <button type="button" role="tab" data-sub="skilllijst" aria-selected="false">Skilllijst</button>
+      <button type="button" role="tab" data-sub="werkdagen" aria-selected="false">Werkdagen</button>
+      <button type="button" role="tab" data-sub="dagelijks" aria-selected="false">Dagelijkse les</button>
+      <button type="button" role="tab" data-sub="scorebord" aria-selected="false">Scorebord</button>
+    </div>
+    <div class="inst-sub" data-sub="leren">
+    <section class="paneel" id="vakken-paneel" style="margin-top:0" hidden>
+      <div class="paneel-kop"><div><h2>Wat wil je leren?</h2><p class="sub">Je eigen vak staat standaard aan. <b>Meeleren</b>: af en toe een les over dat vak. <b>Focus</b>: daar gaan de meeste lessen over. Voor een extra vak hoef je geen skilllijst in te vullen.</p></div></div>
+      <div id="vakken"></div>
+      <p class="sub" id="vakken-status" role="status"></p>
+    </section>
+    <section class="paneel">
+      <div class="paneel-kop"><div><h2>Verfijnen per hoofdgebied</h2><p class="sub">Optioneel: alles staat op normaal. Wil je binnen een vak ergens meer of minder lessen over, klap het vak open. <b>Hoog</b> komt ongeveer twee keer zo vaak voorbij, <b>laag</b> een derde zo vaak (nooit helemaal niet). Je leidinggevende ziet je keuze.</p></div></div>
+      <div id="prio"></div>
+      <p class="sub" id="prio-status" role="status"></p>
+    </section>
+    </div>
+    <div class="inst-sub" data-sub="werkdagen" hidden>
+    <section class="paneel" id="werkdagen-paneel" hidden>
+      <div class="paneel-kop"><div><h2>Werkdagen</h2><p class="sub">Werk je parttime of ben je een week vrij? Zet je vrije dagen uit. Op een vrije dag breekt je reeks niet; een les doen mag wel en telt mee. Een week pas je aan tot en met vrijdag de week ervoor; daarna ligt hij vast. In het weekend zijn er nooit lessen.</p></div></div>
+      <div id="werkdagen"></div>
+      <p class="sub" id="werkdagen-status" role="status"></p>
+    </section>
+    </div>
+    <div class="inst-sub" data-sub="scorebord" hidden>
+    <section class="paneel" id="sb-instelling" hidden><div class="paneel-kop"><div><h2>Scorebord</h2><p class="sub">Op het scorebord ziet het team alleen je naam, je aantal goed en je reeks. Nooit je skilllijst, vragen of antwoorden.</p></div></div>
+      <label class="schakel"><input type="checkbox" id="sb-zichtbaar" checked> Toon mij op het scorebord</label>
+      <p class="sub" id="sb-zichtbaar-status" role="status"></p>
+    </section>
+    </div>
+    <div class="inst-sub" data-sub="dagelijks" hidden>
+    <section class="paneel" id="snelkoppeling">
+      <div class="paneel-kop"><div><h2>Elke dag vanzelf je les</h2><p class="sub">Kies een van de twee opties. Eenmalig instellen, ongeveer een minuut.</p></div></div>
+      <h3 style="font-size:15px;margin-bottom:8px">Optie 1: de pop-up <span class="pill" style="margin-left:6px">Aanrader</span> <span class="sub">(Windows)</span></h3>
+      <p id="popup-staging" hidden><strong>Niet in de testversie.</strong> De pop-up werkt alleen met de live versie en je live account. Installeer hem daar, niet hier.</p>
+      <div id="popup-optie">
+      <p>De pop-up zet je les 's ochtends en om 12:30 over je scherm en gaat pas weg als je hem hebt gedaan (één keer per dag 2 uur uitstellen mag). Hij werkt zichzelf bij; je installeert hem één keer.</p>
+      <ol class="stappen-lijst" style="margin-bottom:12px">
+        <li>Open <strong>Windows PowerShell</strong> via het Startmenu.</li>
+        <li><button type="button" class="knop zwart" data-actie="kopieer-popup">Kopieer de installatieregel</button>, plak hem in PowerShell en druk op Enter.</li>
+        <li>Kies <em>Ik heb al een account</em> en vul je uitnodigingscode en je code van zes woorden in.</li>
+      </ol>
+      </div>
+      <h3 style="font-size:15px;margin:22px 0 8px;padding-top:18px;border-top:1px solid var(--cool)">Optie 2: een snelkoppeling <span class="sub">(Windows en Mac)</span></h3>
+      <p>Geen pop-up, maar elke keer dat je je computer opstart gaat deze pagina vanzelf open. Vink bij het inloggen "Onthoud mij" aan, dan sta je meteen in je les. Werk je op een Mac, dan is dit je optie.</p>
+      <details class="spoiler" style="margin-top:6px">
+        <summary>Toon de stappen voor de snelkoppeling</summary>
+        <div class="twee">
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px">Windows</h3>
+            <ol class="stappen-lijst">
+              <li><button type="button" class="knop zwart" data-actie="snel-win">Kopieer de link</button></li>
+              <li>Druk op <kbd>Windows</kbd> + <kbd>R</kbd>, typ <code>shell:startup</code> en druk op Enter. De map <em>Opstarten</em> gaat open.</li>
+              <li>Klik met rechts in die map → <strong>Nieuw</strong> → <strong>Snelkoppeling</strong>, plak de link, klik op <strong>Volgende</strong>, noem hem <code>DoubleLeren</code> en klik op <strong>Voltooien</strong>.</li>
+            </ol>
+          </div>
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px">Mac</h3>
+            <ol class="stappen-lijst">
+              <li><button type="button" class="knop zwart" data-actie="snel-mac">Download de snelkoppeling</button></li>
+              <li>Open <em>Systeeminstellingen → Algemeen → Inlogonderdelen</em>.</li>
+              <li>Klik op <strong>+</strong> en kies <code>DoubleLeren.webloc</code> uit je Downloads.</li>
+            </ol>
+          </div>
+        </div>
+      </details>
+    </section>
+    </div>
+    <div class="inst-sub" data-sub="skilllijst" hidden>
+    <section class="paneel" style="margin-top:0">
+      <div class="paneel-kop"><div><h2>Skilllijst</h2><p class="sub" id="mx-sub"></p></div><button class="knop zwart" type="button" id="mx-bijwerken">Skilllijst bijwerken</button></div>
+      <p class="sub" id="mx-ronde" style="margin:0 0 12px"></p>
+      <p class="sub" id="mx-klaar" role="status"></p>
+      <p class="sub" style="margin:0 0 12px">Welke vakken je leert en waar je je op richt, stel je in bij <button type="button" class="leslink" data-sub-naar="leren">Wat ik leer</button>.</p>
+      <div id="matrix"></div>
+      <div class="legenda"><span><i class="sw"></i>Laatste score (gemiddeld, 1–5)</span><span><i class="sw tick"></i>Eerste meting</span></div>
+    </section>
+    <section class="paneel" id="mx-form-paneel" hidden>
+      <div class="paneel-kop"><div><h2 id="mx-form-titel">Skilllijst bijwerken</h2><p class="sub">Geef per vaardigheid je inschatting van nu: <b>1</b> = nieuw voor mij, <b>3</b> = ik kan het zelfstandig, <b>5</b> = ik kan het anderen leren. Typ een cijfer en je springt vanzelf naar de volgende; met de pijltjes ga je omhoog en omlaag.</p></div></div>
+      <div class="prio-keuze" id="mx-vakkeuze" role="group" aria-label="Vak" style="margin-bottom:8px" hidden></div>
+      <div class="prio-keuze" id="mx-modus" role="group" aria-label="Manier van invullen" style="margin-bottom:12px"></div>
+      <p class="sub" id="mx-check-info" style="margin:0 0 8px"></p>
+      <p class="sub" style="margin:0 0 4px">Staat je skilllijst al in Excel? <label class="leslink" for="mx-xlsx" style="cursor:pointer">Upload hem</label> in plaats van alles over te typen.<input id="mx-xlsx" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden></p>
+      <p class="sub" id="mx-xlsx-info" role="status" style="margin:0 0 12px"></p>
+      <form id="mx-form" autocomplete="off">
+        <div id="mx-velden"></div>
+        <div class="mx-sticky"><span class="sub num" id="mx-voortgang" role="status"></span><div class="les-knoppen"><button type="button" class="knop" id="mx-annuleer" style="background:var(--cool-50)">Annuleren</button><button type="button" class="knop zwart" id="mx-opslaan">Opslaan</button></div></div>
+        <p class="fout" id="mx-fout" role="alert"></p>
+      </form>
+    </section>
+    </div>
+  </div>
+
+
+  <div id="scorebord" hidden>
+    <section class="paneel" style="margin-top:0">
+      <div class="paneel-kop"><div><h2>Scorebord</h2><p class="sub">Elke maand een nieuwe ronde. Punten = aantal goed + je langste reeks van die maand (weekenden onderbreken een reeks niet).</p></div>
+        <div class="sb-kies"><span class="prio-keuze" id="sb-groep" role="group" aria-label="Wie" hidden></span><label for="sb-keuze" class="sub" style="margin:0">Periode</label><select id="sb-keuze" class="veld"></select><button type="button" class="knop" id="sb-vernieuw">Vernieuwen</button></div></div>
+      <div class="tabel"><table id="sb-tabel"></table></div>
+      <p class="sub" id="sb-sub"></p>
+      <p class="fout" id="sb-fout" role="alert"></p>
+    </section>
+  </div>
+
+  <div id="lesdetail" hidden>
+    <section class="paneel les-kaart" style="margin-top:0">
+      <div id="ld-kop"></div>
+      <div id="ld-inhoud" class="les-tekst"></div>
+      <div id="ld-knoppen" class="les-knoppen"></div>
+    </section>
+  </div>
+
+  <div id="feedback" hidden>
+    <section class="paneel les-kaart" style="margin-top:0">
+      <div class="paneel-kop"><div><h2>Geef feedback</h2><p class="sub">De beheerder leest dit met je naam erbij, zodat hij kan navragen of laten weten dat het is opgelost. De lesgenerator leest het zonder naam en verbetert er lessen mee. Het wordt versleuteld verstuurd.</p></div></div>
+      <form id="fb-form" class="stappen" autocomplete="off">
+        <div class="opties" role="radiogroup" aria-label="Soort feedback">
+          <label class="optie"><input type="radio" name="fb-soort" value="bug"><span><b>Bug</b><br><span class="sub">Iets werkt niet of ziet er vreemd uit</span></span></label>
+          <label class="optie"><input type="radio" name="fb-soort" value="fout"><span><b>Fout of onvolledig antwoord</b><br><span class="sub">Een les klopt niet of mist iets belangrijks</span></span></label>
+          <label class="optie"><input type="radio" name="fb-soort" value="toevoeging"><span><b>Toevoeging</b><br><span class="sub">Dit wil ik graag nog zien of leren</span></span></label>
+          <label class="optie"><input type="radio" name="fb-soort" value="goed"><span><b>Dit gaat goed</b><br><span class="sub">Wat werkt er goed en moet vooral zo blijven?</span></span></label>
+        </div>
+        <label class="veld-label">Over welke les? <span id="fb-les-uitleg">(optioneel)</span><select id="fb-les" class="veld"><option value="">Geen specifieke les</option></select></label>
+        <label class="veld-label">Je feedback<textarea id="fb-tekst" class="antwoord" rows="5" maxlength="2000" placeholder="Wat zag je, wat had je verwacht, of wat zou je graag nog zien?"></textarea></label>
+        <div class="les-knoppen"><button type="button" class="knop" id="fb-terug" style="background:var(--cool-50)">Terug</button><button type="button" class="knop zwart" id="fb-verstuur">Versturen</button></div>
+        <p class="fout" id="fb-fout" role="alert"></p>
+        <p class="sub" id="fb-status" role="status"></p>
+      </form>
+    </section>
+  </div>
+
+  <div id="team" hidden>
+    <section class="paneel" style="margin-top:0">
+      <div class="paneel-kop"><div><h2 id="team-titel">Mijn team</h2><p class="sub">Gemiddelde laatste score per hoofdgebied. Klik op een naam voor het profiel (scores en resultaten, geen antwoorden).</p></div><select id="team-vak" class="veld" aria-label="Vak" style="width:auto" hidden></select></div>
+      <div class="tabel"><table class="hm" id="heatmap"></table></div>
+      <div class="legenda" id="hm-legenda"></div>
+    </section>
+    <section class="twee">
+      <div class="paneel"><div class="paneel-kop"><div><h2>Aandacht</h2><p class="sub">Hoofdgebieden waar het team gemiddeld laag scoort, en wie er sterk in is.</p></div></div><div id="aandacht"></div></div>
+      <div class="paneel">
+        <div class="paneel-kop"><div><h2>Expertzoeker</h2><p class="sub">Wie scoort 4 of 5 op een vaardigheid?</p></div></div>
+        <label for="expert" class="sub" style="display:block;margin:0 0 6px">Zoek een vaardigheid</label>
+        <input id="expert" class="veld" type="search" placeholder="bijv. hreflang, GA4, structured data" autocomplete="off">
+        <div id="experts" style="margin-top:10px"></div>
+      </div>
+    </section>
+    <section class="paneel"><div class="paneel-kop"><div><h2>Activiteit per persoon</h2><p class="sub">Klik op een naam voor het profiel. "Skilllijst" laat zien of iemand de halfjaarlijkse check (31 januari en 31 juli) heeft gedaan.</p></div></div><div class="tabel"><table id="activiteit"></table></div></section>
+    <section class="paneel" id="profiel" hidden></section>
+  </div>
+
+  <div id="kennisbank" hidden>
+    <section class="paneel" style="margin-top:0">
+      <div class="paneel-kop"><div><h2>Kennisbank</h2><p class="sub">Je eigen naslag: elke les die je hebt gedaan, met het kernpunt en de bron. Zoek op onderwerp, term of bron, en klik op een les om de uitleg terug te lezen.</p></div></div>
+      <label for="kb-zoek" class="sub" style="display:block;margin:0 0 6px">Zoeken</label>
+      <input id="kb-zoek" class="veld" type="search" placeholder="bijv. canonical, INP, A/B-test" autocomplete="off">
+      <p class="sub" id="kb-teller"></p>
+      <div id="kb-lijst"></div>
+    </section>
+  </div>
+
+
+  <div id="uitnodigen" hidden>
+    <section class="paneel" style="margin-top:0">
+      <div class="paneel-kop"><div><h2>Collega uitnodigen</h2><p class="sub">Klik op <b>Uitnodigen</b> en stuur het bericht dat verschijnt via Teams. Je ziet alleen wie je mag uitnodigen.</p></div></div>
+      <h3 id="ui-open-kop" style="margin:4px 0 8px;font-size:16px">Nog uit te nodigen</h3>
+      <div class="tabel"><table id="ui-lijst"></table></div>
+      <details id="ui-mee" style="margin-top:14px" hidden><summary id="ui-mee-kop" style="cursor:pointer;font-weight:600">Doet al mee</summary>
+        <p class="sub" style="margin:6px 0">Nieuwe code nodig, bijvoorbeeld voor een tweede laptop? Klik op Nieuwe code.</p>
+        <div class="tabel"><table id="ui-lijst-mee"></table></div></details>
+      <p class="fout" id="ui-fout" role="alert"></p>
+    </section>
+    <section class="paneel" id="ui-resultaat" hidden>
+      <div class="paneel-kop"><div><h2 id="ui-res-kop">Uitnodiging klaar</h2><p class="sub">Kopieer dit bericht en stuur het via Teams. De code werkt 14 dagen, of tot de collega zich heeft aangemeld. Je ziet de code maar één keer.</p></div></div>
+      <pre class="veld" id="ui-bericht" style="white-space:pre-wrap;margin:0;border-radius:12px;padding:14px 16px"></pre>
+      <div style="display:flex;gap:8px;margin-top:10px"><button type="button" class="knop zwart" id="ui-kopieer">Kopieer bericht</button></div>
+    </section>
+    <section class="paneel" id="ui-nieuw-paneel">
+      <div class="paneel-kop"><div><h2>Nieuwe collega</h2><p class="sub">Staat iemand nog niet in de lijst? Vul de naam, plek en het vak in. De collega staat een paar minuten later in het organogram; de uitnodiging kun je meteen versturen.</p></div></div>
+      <form id="ui-nieuw-form" class="stappen" autocomplete="off">
+        <label class="veld-label">Naam<input id="ui-naam" class="veld" maxlength="60" placeholder="Voor- en achternaam"></label>
+        <div class="velden-rij">
+          <label class="veld-label">Plek<select id="ui-plek" class="veld"></select></label>
+          <label class="veld-label">Vak<select id="ui-vak" class="veld"></select></label>
+        </div>
+        <label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="ui-optioneel"> Lessen optioneel (zelf kiezen of iemand meedoet)</label>
+        <button type="button" class="knop zwart" id="ui-nieuw-knop">Toevoegen en uitnodigen</button>
+        <p class="fout" id="ui-nieuw-fout" role="alert"></p>
+      </form>
+    </section>
+  </div>
+
+  <div id="maken" hidden>
+    <section class="paneel les-kaart" style="margin-top:0">
+      <div class="paneel-kop"><div><h2>Les toevoegen</h2><p class="sub">Je les komt bij de volgende generatorrun (elke ochtend) in de kennisbank en kan dan in de wachtrij van collega's komen. Lessen zijn voor het hele team zichtbaar: zet er niets klantvertrouwelijks in. Opmaak: lege regel = nieuwe alinea, <code>- </code> aan het begin van een regel = opsomming, <code>**vet**</code>.</p></div></div>
+      <form id="maak-form" class="stappen" autocomplete="off">
+        <label class="veld-label">Titel<input id="m-titel" class="veld" maxlength="90" placeholder="Pakkende titel, max. ~70 tekens"></label>
+        <div class="velden-rij">
+          <label class="veld-label">Vakgebied<select id="m-vakgebied" class="veld"><option>SEO</option><option>CRO</option><option>SEO / AI-search</option><option>SEO × Claude</option><option>CRO × Claude</option><option>Analytics</option></select></label>
+          <label class="veld-label">Niveau<select id="m-niveau" class="veld"><option value="basis">Basis</option><option value="gevorderd">Gevorderd</option><option value="expert">Expert</option></select></label>
+          <label class="veld-label">Type<select id="m-type" class="veld"><option value="basis">Basis</option><option value="verdieping">Verdieping</option><option value="nieuws">Nieuws</option></select></label>
+          <label class="veld-label">Case voor<select id="m-cel" class="veld"><option value="alle">Alle cellen</option></select></label>        </div>
+        <div class="velden-rij">
+          <label class="veld-label">Onderwerp<input id="m-onderwerp" class="veld" maxlength="80" placeholder="bijv. Core Web Vitals"></label>
+          <label class="veld-label">Vaardigheid-id's uit de skilllijst<input id="m-matrix" class="veld" maxlength="120" placeholder="bijv. 1.3.3, 4.2.1"></label>
+        </div>
+        <label class="veld-label">Intro (optioneel): alleen de situatie, max. ~60 woorden. Verklap het antwoord niet: de uitleg komt pas na de opdracht.<textarea id="m-intro" class="antwoord" rows="2" maxlength="1500"></textarea></label>
+        <label class="veld-label">Soort opdracht<select id="m-soort" class="veld"><option value="meerkeuze">Meerkeuze</option><option value="open">Open vraag</option><option value="zoek-op">Zoek het op</option><option value="maak-met-claude">Maak het met Claude</option></select></label>
+        <label class="veld-label">Vraag of opdracht<textarea id="m-vraag" class="antwoord" rows="3" maxlength="2000"></textarea></label>
+        <label class="veld-label">Tip (optioneel)<input id="m-hint" class="veld" maxlength="300"></label>
+        <div id="m-mk" class="stappen">
+          <p class="sub" style="margin:0">Vier antwoorden; kies welke juist is.</p>
+          <label class="optie"><input type="radio" name="m-juist" value="0" aria-label="Antwoord A is juist"><input id="m-optie0" class="veld" maxlength="400" placeholder="Antwoord A"></label>
+          <label class="optie"><input type="radio" name="m-juist" value="1" aria-label="Antwoord B is juist"><input id="m-optie1" class="veld" maxlength="400" placeholder="Antwoord B"></label>
+          <label class="optie"><input type="radio" name="m-juist" value="2" aria-label="Antwoord C is juist"><input id="m-optie2" class="veld" maxlength="400" placeholder="Antwoord C"></label>
+          <label class="optie"><input type="radio" name="m-juist" value="3" aria-label="Antwoord D is juist"><input id="m-optie3" class="veld" maxlength="400" placeholder="Antwoord D"></label>
+          <label class="veld-label">De kern: één zin achter "Goed!" (herhaal het juiste antwoord niet letterlijk)<input id="m-kern" class="veld" maxlength="200"></label>
+          <p class="sub" style="margin:0">Waarom klopt elk fout antwoord niet? Eén zin per optie, begin met een korte naam in vet, bijv. <code>**Zwaardere hosting:** de server is al snel.</code> Laat het juiste antwoord leeg.</p>
+          <input id="m-afl0" class="veld" maxlength="300" placeholder="Waarom A niet klopt">
+          <input id="m-afl1" class="veld" maxlength="300" placeholder="Waarom B niet klopt">
+          <input id="m-afl2" class="veld" maxlength="300" placeholder="Waarom C niet klopt">
+          <input id="m-afl3" class="veld" maxlength="300" placeholder="Waarom D niet klopt">
+        </div>
+        <div id="m-open" class="stappen" hidden>
+          <label class="veld-label">Minimaal aantal tekens in het antwoord<input id="m-min" class="veld" type="number" min="20" max="1000" value="100"></label>
+          <label class="veld-label">Modelantwoord: zo zou een expert het doen<textarea id="m-model" class="antwoord" rows="4" maxlength="4000"></textarea></label>
+        </div>
+        <label class="veld-label">Zo werkt het: 2–5 korte zinnen zonder vakjargon, met één vergelijking uit het dagelijks leven<textarea id="m-kort" class="antwoord" rows="3" maxlength="600"></textarea></label>
+        <label class="veld-label">Begrippen (optioneel): hooguit vier, één per regel als <code>term: uitleg</code>, alleen woorden die in de les voorkomen<textarea id="m-begrippen" class="antwoord" rows="3" maxlength="1000" placeholder="TTFB: tijd tot het eerste stukje van de pagina binnenkomt"></textarea></label>
+        <label class="veld-label">Volledige uitleg (uitklapbaar): de verdieping, 100–180 woorden<textarea id="m-uitleg" class="antwoord" rows="8" maxlength="6000"></textarea></label>
+        <label class="veld-label">Onthoud: één vuistregel<textarea id="m-kernpunt" class="antwoord" rows="2" maxlength="600"></textarea></label>
+        <label class="veld-label">Probeer vandaag (optioneel): iets van hooguit 10 minuten<textarea id="m-toepassing" class="antwoord" rows="2" maxlength="600"></textarea></label>
+        <div class="velden-rij">
+          <label class="veld-label">Bron, titel (optioneel)<input id="m-bron-titel" class="veld" maxlength="200"></label>
+          <label class="veld-label">Bron, link (https)<input id="m-bron-url" class="veld" type="url" maxlength="500" placeholder="https://"></label>
+        </div>
+        <div class="les-knoppen"><button type="button" class="knop zwart" id="maak-knop">Les indienen</button></div>
+        <p class="fout" id="maak-fout" role="alert"></p>
+        <p class="sub" id="maak-status" role="status"></p>
+      </form>
+    </section>
+  </div>
+
+  <footer id="voet"></footer>
+</main>
+<div id="tip" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

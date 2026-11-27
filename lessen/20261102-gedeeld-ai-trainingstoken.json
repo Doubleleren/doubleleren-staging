@@ -1,0 +1,45 @@
+{
+  "id": "20261102-gedeeld-ai-trainingstoken",
+  "type": "nieuws",
+  "niveau": "basis",
+  "vakgebied": "SEO / AI-search",
+  "onderwerp": "Eén robots.txt-regel tegen AI-training: het gedeelde token __usage_ai-training",
+  "matrix": ["12.1.6", "1.3.6"],
+  "cel": "alle",
+  "titel": "Eén robots.txt-regel tegen AI-training voor iedereen: nu al overstappen?",
+  "intro": "Een regionale nieuwssite wil niet dat haar artikelen worden gebruikt om AI-modellen te trainen, maar wil wel zichtbaar blijven in Google. In robots.txt staan nu aparte regels voor GPTBot en Google-Extended. De developer las dat Google, Microsoft en OpenAI één gedeelde regel hebben omarmd, en stelt voor om alleen die nog te gebruiken:\n\nUser-agent: __usage_ai-training\nDisallow: /",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat adviseer je de nieuwssite?",
+    "opties": [
+      "Het voorstel volgen, want Google, Microsoft en OpenAI hebben het token aangekondigd en lezen het vanaf vandaag.",
+      "De regel niet toevoegen, omdat een Disallow onder dit token ook Googlebot blokkeert en de site uit Search haalt.",
+      "Geen nieuwe regel nodig: een Disallow onder User-agent: * geldt straks automatisch ook voor het trainingstoken.",
+      "De regel mag erbij, maar laat GPTBot en Google-Extended staan: nog geen enkele partij ondersteunt het token."
+    ],
+    "juist": 3
+  },
+  "kern": "De gedeelde regel is aangekondigd, maar wordt nog nergens gelezen. De regels per partij blijven voorlopig je enige werkende bescherming.",
+  "afleiders": [
+    "**Vanaf vandaag:** het zijn aankondigingen, geen werkende ondersteuning. Google begint begin 2027, Microsoft op 1 februari 2027 en OpenAI 'in de komende maanden'.",
+    "**Blokkeert Googlebot:** het token is geen crawlinstructie, en Google-Extended raakt Google Search niet. De site blijft dus gewoon in Search.",
+    "**User-agent: * telt mee:** dat lijkt logisch, want * betekent 'iedereen'. Maar volgens het voorstel mag een wildcardgroep nooit als trainingsvoorkeur worden gelezen.",
+    ""
+  ],
+  "kort": "Vergelijk het met een nieuw nee-nee-stickertje voor de brievenbus dat pas volgend jaar gaat gelden. Plak je het nu al op en haal je het oude stickertje weg, dan krijg je tot die tijd gewoon weer reclame. Zo werkt het met de nieuwe gedeelde regel tegen AI-training: nog geen enkele partij leest hem. Laat de oude regels voor GPTBot en Google-Extended dus staan tot de nieuwe echt werkt.",
+  "begrippen": [
+    { "term": "robots.txt", "uitleg": "een bestand op je site dat bots vertelt wat ze wel en niet mogen." },
+    { "term": "Token", "uitleg": "de naam achter User-agent in robots.txt. Hier is het geen echte bot, maar een label voor een voorkeur." },
+    { "term": "GPTBot", "uitleg": "de crawler van OpenAI." },
+    { "term": "Google-Extended", "uitleg": "een token in robots.txt waarmee je aangeeft of Google je content voor Gemini mag gebruiken. Het raakt Google Search niet." }
+  ],
+  "uitleg": "**Wat is het?** Een voorstel bij de IETF (de AIPREF-werkgroep) voor één robots.txt-regel waarmee je aangeeft of je content gebruikt mag worden om AI-modellen te trainen. Het token heet **__usage_ai-training** en werkt met gewone Disallow- en Allow-regels:\n\n- User-agent: __usage_ai-training\n- Disallow: /\n- Allow: /persberichten/\n\nHet is geen crawlinstructie: wie crawlers wil tegenhouden, blijft regels per crawler gebruiken. Staat het token nergens, dan heb je geen voorkeur opgegeven.\n\n**Hoe Google het leest (vanaf begin 2027):** zet je het token op Disallow en noem je Google-Extended niet apart, dan behandelt Google dat als een Disallow voor **Google-Extended**. Dat token regelt zowel training van Gemini-modellen als *grounding* in Gemini-apps. Een eigen Google-Extended-regel blijft gewoon werken. Google-Extended heeft geen invloed op opname of ranking in Google Search.\n\nGoogle kondigde de ondersteuning aan op 30 oktober 2026. Tot de andere partijen echt meedoen, gelden hun huidige regels, zoals die voor GPTBot.",
+  "kernpunt": "Komt er een nieuwe standaard voor robots.txt, haal de oude regels dan pas weg als de partijen hem echt ondersteunen.",
+  "toepassing": "Open bij een klant die AI-training wil tegenhouden de robots.txt. Noteer welke AI-regels er nu staan en zet in de planning voor begin 2027 een moment om te controleren of het gedeelde token ondersteund wordt.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Supporting a shared AI training control for websites | Google Search Central Blog",
+    "url": "https://developers.google.com/search/blog/2026/10/ai-training-control"
+  }
+}

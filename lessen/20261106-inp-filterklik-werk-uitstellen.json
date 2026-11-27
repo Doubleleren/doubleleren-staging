@@ -1,0 +1,44 @@
+{
+  "id": "20261106-inp-filterklik-werk-uitstellen",
+  "type": "verdieping",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "Core Web Vitals: INP verbeteren door werk na een klik uit te stellen",
+  "matrix": ["5.2.5", "5.2.4"],
+  "cel": "ecom",
+  "titel": "Een filterklik van 480 ms: wat moet de developer als eerste doen?",
+  "intro": "Een kledingwebshop heeft op mobiel een INP van 480 ms, vooral op categoriepagina's. INP (Interaction to Next Paint) meet hoe snel een pagina zichtbaar reageert op een klik of tik. Uit de velddata blijkt dat de klik op een filter de trage interactie is. Bij die klik draait één script dat de producten ophaalt, de lijst opnieuw opbouwt, een event naar GA4 stuurt en de URL bijwerkt.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat adviseer je de developer als eerste?",
+    "opties": [
+      "Eerst alleen de knop en een laadicoon bijwerken en de rest later doen, want INP meet tot het eerstvolgende beeld.",
+      "Het GA4-event uit het script halen, want trackingcode is op de meeste webshops de grootste oorzaak van een trage INP.",
+      "De productfoto's op de pagina kleiner maken, want zware afbeeldingen houden de browser na elke klik bezig.",
+      "Een snellere server en een CDN nemen, want dan komen de producten na een klik op het filter sneller binnen."
+    ],
+    "juist": 0
+  },
+  "kern": "Nu tekent de browser pas iets als het hele script klaar is. Geef de bezoeker eerst een zichtbaar teken, dan valt de rest buiten deze meting.",
+  "afleiders": [
+    "",
+    "**GA4-event schrappen:** tracking staat bekend als zwaar, dus dat lijkt logisch. Het scheelt een beetje, maar je verliest data, en uitstellen is beter.",
+    "**Kleinere foto's:** zware afbeeldingen maken een pagina traag, dus dat lijkt een goede zet. Maar ze helpen de laadtijd (LCP), niet de reactie op een klik.",
+    "**Snellere server:** de producten komen dan sneller binnen, dat klopt. Maar wachten op het netwerk houdt de browser niet bezig, dus dat telt nauwelijks mee in INP."
+  ],
+  "kort": "Denk aan een ober die je bestelling opneemt. Een goede ober knikt meteen, zegt 'komt eraan' en loopt dan pas naar de keuken. Een slechte ober zegt niets tot het eten klaar is, en jij denkt dat hij je niet gehoord heeft. Het filter op deze webshop is die stille ober: het laat pas iets zien als alles klaar is. Eerst knikken en dan koken maakt de site voor de bezoeker direct snel.",
+  "begrippen": [
+    { "term": "Velddata", "uitleg": "metingen bij echte bezoekers, in plaats van een test die je zelf draait." },
+    { "term": "Script", "uitleg": "een stuk JavaScript-code dat iets doet op de pagina, hier na de klik op een filter." },
+    { "term": "LCP", "uitleg": "Largest Contentful Paint: hoe snel het grootste stuk inhoud bij het laden in beeld staat." }
+  ],
+  "uitleg": "INP is goed bij **200 ms of minder**. Elke interactie heeft drie delen, en voor elk deel is er een andere oplossing:\n\n- **Input delay** (wachten tot het script mag beginnen): de browser is nog bezig met ander werk, vaak scripts tijdens het laden. Houd lange taken bij het laden kort.\n- **Processing duration** (het script zelf): doe in de klik alleen wat nodig is voor het volgende beeld en schuif de rest door, bijvoorbeeld met setTimeout. web.dev noemt dit 'yielding': de browser even ruimte geven.\n- **Presentation delay** (het tekenen): een grote DOM (veel HTML-elementen) maakt elk nieuw beeld duurder. Bouw minder elementen tegelijk op, of gebruik content-visibility voor wat buiten beeld staat.\n\nLet ook op **layout thrashing**: een script dat stijlen wijzigt en direct daarna maten opvraagt, dwingt de browser steeds opnieuw te rekenen.",
+  "kernpunt": "Is INP slecht, zoek dan eerst in de velddata welke interactie traag is, en vraag wat de code daar doet vóór het eerste nieuwe beeld.",
+  "toepassing": "Zoek vandaag in de velddata (bijv. via PageSpeed Insights of een RUM-tool) welke interactie bij een klant de slechtste INP heeft. Vraag de developer of de code bij die klik meer doet dan nodig is voor het eerste beeld.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Optimize Interaction to Next Paint | web.dev",
+    "url": "https://web.dev/articles/optimize-inp"
+  }
+}

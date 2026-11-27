@@ -1,0 +1,36 @@
+{
+  "id": "20261021-html-vs-xml-sitemap",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "HTML- vs. XML-sitemaps",
+  "matrix": [
+    "1.4.4",
+    "1.4.2"
+  ],
+  "cel": "ecom",
+  "titel": "\"We hebben al een sitemap in de footer\": is dat genoeg?",
+  "intro": "Een klant met een webshop van 30.000 producten zegt bij de kick-off: \"Een XML-sitemap hebben we niet nodig, er staat al een sitemap-pagina in de footer met links naar alle categorieën.\"",
+  "opdracht": {
+    "soort": "open",
+    "vraag": "Leg de klant in een paar zinnen uit wat het verschil is tussen een HTML-sitemap en een XML-sitemap, voor wie elk bedoeld is, en wat jouw advies is voor deze webshop.",
+    "minTekens": 120
+  },
+  "modelantwoord": "**De kern:** de footerpagina is voor bezoekers en linkt alleen naar categorieën. Voor 30.000 producten wil je ook een XML-sitemap, zodat Google alle producten vindt en jij in Search Console ziet wat niet geïndexeerd is.\n\n**Waarom:** een HTML-sitemap is een gewone pagina voor bezoekers. Crawlers hebben er alleen indirect iets aan, via de interne links. Een XML-sitemap is een bestand voor zoekmachines met alle URL's die je geïndexeerd wilt hebben, eventueel met lastmod.\n\n**Advies voor deze shop:** splits de XML-sitemap per paginatype (categorieën, producten) en bundel de bestanden in een sitemap-index. Dien die in via Search Console.\n\n**Veelgemaakte fout:** denken dat de ene sitemap de andere vervangt. Ze hebben elk een ander doel.",
+  "kort": "Een inhoudsopgave voorin een boek helpt de lezer bladeren, maar noemt alleen de hoofdstukken. De drukker krijgt daarnaast een complete lijst van elke pagina. Zo werkt het ook met sitemaps: de HTML-sitemap is de inhoudsopgave voor bezoekers, de XML-sitemap de complete lijst voor zoekmachines. Bij 30.000 producten mis je zonder die lijst het overzicht.",
+  "begrippen": [
+    { "term": "HTML-sitemap", "uitleg": "een gewone pagina op de site met links naar de belangrijkste onderdelen, bedoeld voor bezoekers." },
+    { "term": "XML-sitemap", "uitleg": "een bestand voor zoekmachines met een lijst van de URL's die je in Google wilt hebben." },
+    { "term": "Sitemap-index", "uitleg": "een overzichtsbestand dat naar meerdere XML-sitemaps verwijst, handig bij grote sites." },
+    { "term": "lastmod", "uitleg": "een veld in de XML-sitemap met de datum waarop een pagina voor het laatst echt veranderd is." }
+  ],
+  "uitleg": "**HTML-sitemap**\n- Een gewone webpagina met links, bedoeld voor **bezoekers**.\n- Helpt crawlers alleen indirect: het zijn interne links.\n- Bevat in de praktijk vaak alleen de hoofdstructuur.\n\n**XML-sitemap**\n- Een bestand voor **zoekmachines** met de URL's die je geïndexeerd wilt hebben.\n- Maximaal **50.000 URL's of 50 MB** (ongecomprimeerd) per bestand; daarboven splits je en bundel je in een sitemap-index.\n- Google gebruikt lastmod als die consistent klopt, en negeert priority en changefreq.\n- Garandeert **geen** indexering, maar helpt bij het ontdekken.\n\nVolgens Google heb je een XML-sitemap vooral nodig bij een **grote site**, een **nieuwe site** met weinig externe links of veel rich media. Een kleine site (ongeveer 500 pagina's of minder) die goed intern gelinkt is, kan zonder.\n\nHet grootste voordeel voor jou als SEO: dien je de XML-sitemap in via Search Console, dan kun je in het rapport Pagina-indexering filteren op ingediende URL's. Zo zie je precies welke pagina's die je belangrijk vindt níet geïndexeerd zijn. Splits daarom per paginatype, zodat je problemen per type ziet.",
+  "kernpunt": "Heeft een site meer pagina's dan menu en footer kunnen tonen, zorg dan voor een XML-sitemap, gesplitst per paginatype.",
+  "toepassing": "Kijk vandaag bij één klant in Search Console onder Sitemaps hoeveel sitemaps er zijn ingediend. Is het er één grote, noteer dan een opsplitsing per paginatype als advies.",
+  "herzien": "2026-11-11",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Build and Submit a Sitemap | Google Search Central",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "20261022-fcp-render-blocking",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "First Contentful Paint (FCP) controleren en verbeteren",
+  "matrix": [
+    "5.2.9",
+    "5.2.8"
+  ],
+  "cel": "alle",
+  "titel": "FCP van 3,4 seconde, TTFB is prima: waar zit de vertraging?",
+  "intro": "Een nieuwssite heeft volgens CrUX een FCP van 3,4 s op mobiel (75e percentiel). De TTFB is 0,5 s. In de waterfall zie je in de <head> drie CSS-bestanden van samen 380 kB, een synchroon geladen script van een A/B-testtool en twee webfonts. De hero-afbeelding is 90 kB en wordt pas na de CSS opgehaald.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welke aanpak levert waarschijnlijk de grootste FCP-winst op?",
+    "opties": [
+      "De hero-afbeelding omzetten naar AVIF en lazy laden, zodat er bij de eerste paint minder te downloaden is.",
+      "Overstappen naar snellere hosting met een CDN, zodat de TTFB en daarmee elke volgende stap korter wordt.",
+      "Kritieke CSS inline, het testscript niet-blokkerend en font-display: swap, zodat de eerste paint niet wacht.",
+      "Een preload toevoegen voor alle drie de CSS-bestanden, zodat de browser ze eerder ontdekt en ophaalt."
+    ],
+    "juist": 2
+  },
+  "kern": "De server is snel klaar, maar daarna wacht de browser op CSS en een script voordat hij iets mag tonen, dus daar zit de winst.",
+  "afleiders": [
+    "**AVIF en lazy laden:** minder bytes klinkt als sneller. Maar een afbeelding blokkeert het renderen niet, en lazy loading op een hero-afbeelding schaadt je LCP.",
+    "**Snellere hosting of CDN:** een snellere server helpt alles erna. Maar een TTFB van 0,5 s is al goed (grens 0,8 s), dus daar zit de winst niet.",
+    "",
+    "**Preload voor de CSS:** de browser ontdekt de bestanden dan iets eerder. Maar ze staan al in de head, en het renderen blijft wachten tot alle 380 kB binnen is."
+  ],
+  "kort": "Een restaurant dat het voorgerecht pas serveert als ook het dessert klaarstaat, laat je onnodig lang wachten. Zo werkt deze pagina: de browser wacht op 380 kB opmaak en een testscript voordat hij iets laat zien. Geef hem alleen de opmaak voor het eerste beeld direct mee en laat de rest later komen. Dan staat er veel eerder iets op tafel.",
+  "begrippen": [
+    { "term": "FCP", "uitleg": "First Contentful Paint: het moment dat er voor het eerst iets van de inhoud op het scherm staat." },
+    { "term": "Render-blocking", "uitleg": "een bestand waarop de browser wacht voordat hij iets op het scherm mag tekenen." },
+    { "term": "Kritieke CSS", "uitleg": "de opmaak die nodig is om het bovenste deel van de pagina te tonen." },
+    { "term": "font-display: swap", "uitleg": "een CSS-instelling die tekst eerst in een standaardlettertype toont tot het webfont geladen is." }
+  ],
+  "uitleg": "**FCP** meet hoe lang het duurt tot er voor het eerst iets van de inhoud op het scherm staat: tekst, een afbeelding, een svg. Goed is **1,8 s of sneller**, slecht is **boven de 3,0 s**, gemeten op het 75e percentiel. FCP is geen Core Web Vital, maar een trage FCP maakt een goede LCP onmogelijk.\n\nFCP bestaat uit twee delen: **tot de eerste byte** (TTFB) en **van eerste byte tot eerste paint**. Is de TTFB in orde, dan zit de winst bijna altijd in het tweede deel:\n- **CSS:** zet de kritieke CSS inline en laad de rest later. Haal ongebruikte CSS weg.\n- **JavaScript:** laad scripts met defer of async. A/B-testtools laden vaak synchroon om flikkeren te voorkomen. Dat kost FCP; overweeg server-side testen of beperk het script tot de pagina's met een lopende test.\n- **Fonts:** houd tekst zichtbaar terwijl webfonts laden, bijvoorbeeld met font-display: swap.\n- Verder: preconnect naar andere domeinen, minder redirects en efficiënte caching.\n\nMeet eerst in het lab (Lighthouse, de waterfall) wat er blokkeert, en beoordeel het resultaat in de velddata.",
+  "kernpunt": "Is de TTFB goed en de FCP slecht, zoek dan eerst in de head naar alles waar het renderen op wacht.",
+  "toepassing": "Trek bij een klant met een trage FCP de TTFB eraf en kijk in de Lighthouse-diagnose welke render-blocking resources er in de head staan. Zet de grootste op een fixlijst voor de developer.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "First Contentful Paint (FCP) | web.dev",
+    "url": "https://web.dev/articles/fcp"
+  },
+  "video": {
+    "titel": "The ultimate guide to web performance",
+    "kanaal": "Beyond Fireship",
+    "url": "https://www.youtube.com/watch?v=0fONene3OIA"
+  }
+}

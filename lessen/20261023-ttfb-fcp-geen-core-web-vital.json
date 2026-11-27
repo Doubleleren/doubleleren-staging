@@ -1,0 +1,36 @@
+{
+  "id": "20261023-ttfb-fcp-geen-core-web-vital",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "Core Web Vitals: welke metrics tellen, en wat doe je met de rest?",
+  "matrix": [
+    "5.2.1",
+    "5.2.10"
+  ],
+  "cel": "alle",
+  "titel": "TTFB en FCP staan op oranje: zakt de klant voor de Core Web Vitals?",
+  "intro": "Een klant mailt bezorgd. In PageSpeed Insights staan voor de mobiele homepage op basis van velddata (de afgelopen 28 dagen) deze waarden:\n\n- TTFB 1,2 s (oranje)\n- FCP 2,4 s (oranje)\n- LCP 2,3 s\n- INP 150 ms\n- CLS 0,04\n\n'We zakken nu toch voor de Core Web Vitals?'",
+  "opdracht": {
+    "soort": "open",
+    "vraag": "Wat antwoord je de klant? Zakt de pagina voor de Core Web Vitals, en wat doe je met de oranje TTFB en FCP?",
+    "minTekens": 120
+  },
+  "modelantwoord": "**De kern:** nee, de klant zakt niet. Alleen LCP, INP en CLS tellen, en die zijn alle drie goed. TTFB en FCP tellen niet mee, maar een snellere server geeft de LCP wel meer marge.\n\nWaarom: LCP 2,3 s (goed is maximaal 2,5 s), INP 150 ms (maximaal 200 ms) en CLS 0,04 (maximaal 0,1). Dat is beoordeeld op het 75e percentiel van echte bezoeken.\n\nTTFB en FCP zijn **ondersteunende metrics**, geen Core Web Vitals. Ze helpen verklaren waarom een Core Web Vital goed of slecht is.\n\nToch zou ik ze niet negeren. De LCP zit met 2,3 s dicht tegen de grens, en de TTFB van 1,2 s is daar al een groot deel van. Een tragere server of een drukke periode kan de LCP zo boven de 2,5 s duwen. Een snellere TTFB, bijvoorbeeld via caching of een CDN, geeft dus marge.\n\nVeelgemaakte fouten: elke oranje waarde in PageSpeed Insights als 'gezakt' zien, of TTFB en FCP wegzetten als onbelangrijk terwijl ze de LCP direct beïnvloeden.",
+  "kort": "Denk aan een rijexamen. Je slaagt op wat de examinator beoordeelt: veilig rijden, verkeersregels, parkeren. Hoe lang je bij het stoplicht stond, telt niet mee. Maar wie daar steeds lang staat, komt wel vaker te laat. Zo werken TTFB en FCP: ze zijn geen examenonderdeel, maar ze kosten tijd die de LCP straks mist.",
+  "begrippen": [
+    { "term": "TTFB", "uitleg": "Time to First Byte: hoe lang het duurt voordat de server het eerste stukje van de pagina terugstuurt." },
+    { "term": "FCP", "uitleg": "First Contentful Paint: het moment waarop de eerste tekst of afbeelding in beeld verschijnt." },
+    { "term": "LCP", "uitleg": "Largest Contentful Paint: het moment waarop het grootste stuk inhoud in beeld staat." },
+    { "term": "75e percentiel", "uitleg": "de waarde waar 75% van de metingen onder blijft." }
+  ],
+  "uitleg": "De **Core Web Vitals** zijn drie metrics, elk voor een deel van de gebruikerservaring:\n- **LCP** (laden): goed bij maximaal 2,5 seconde.\n- **INP** (reageren op interactie): goed bij maximaal 200 milliseconden.\n- **CLS** (visuele stabiliteit): goed bij maximaal 0,1.\n\nEen pagina slaagt als alle drie goed zijn op het **75e percentiel** van de paginaweergaven, apart gemeten voor mobiel en desktop. Dus niet het gemiddelde: driekwart van de bezoeken moet onder de grens blijven.\n\nDaarnaast zijn er **ondersteunende metrics**, zoals TTFB en FCP. Die tellen niet mee in het oordeel, maar zijn handig om problemen te vinden:\n- Een trage **TTFB** wijst op de server: hosting, caching, redirects of een verre locatie. Dat vertraagt alles wat daarna komt, ook de LCP.\n- Een trage **FCP** bij een goede TTFB wijst meestal op render-blocking CSS, scripts of fonts.\n\nIn een rapport voor de klant houd je die twee groepen uit elkaar. De Core Web Vitals zijn het oordeel, de ondersteunende metrics zijn de diagnose. Zit een Core Web Vital dicht bij de grens, kijk dan welke ondersteunende metric de meeste tijd kost.",
+  "kernpunt": "Zit de LCP dicht bij de grens, kijk dan welk deel de TTFB ervan opslokt.",
+  "toepassing": "Zoek vandaag bij één klant met een LCP tussen 2 en 2,5 seconde in PageSpeed Insights op hoeveel daarvan de TTFB is. Zet dat in je rapport apart van de drie Core Web Vitals.",
+  "herzien": "2026-11-09",
+  "wijziging": "Uitleg in de vaste opbouw gezet; modelantwoord eenvoudiger gemaakt.",
+  "bron": {
+    "titel": "Web Vitals | web.dev",
+    "url": "https://web.dev/articles/vitals"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "20261022-inline-validatie-formulier",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "CRO",
+  "onderwerp": "Formulieroptimalisatie: inline validatie",
+  "matrix": [
+    "7.1.1"
+  ],
+  "cel": "leadgen",
+  "titel": "Foutmelding pas na 'Verstuur': hoe valideer je een formulier wél?",
+  "intro": "Een leadgen-klant heeft een offerteformulier met 7 velden. In Clarity zie je veel bezoekers die op 'Verstuur' klikken, bovenaan een foutmelding krijgen en dan afhaken. De developer wil inline validatie toevoegen: elk veld wordt gecontroleerd terwijl het formulier wordt ingevuld, met een melding direct bij dat veld.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welke manier van inline valideren werkt volgens usability-onderzoek het best?",
+    "opties": [
+      "Elk veld vanaf de eerste toetsaanslag controleren, zodat de bezoeker direct ziet wat er nog niet goed is.",
+      "Alleen na een klik op 'Verstuur' controleren, maar de foutmelding dan naast het veld zetten in plaats van bovenaan.",
+      "Controleren zodra de bezoeker het veld verlaat, en de foutmelding pas weghalen als hij opnieuw op 'Verstuur' klikt.",
+      "Controleren bij het verlaten van het veld, de fout weghalen zodra de invoer klopt en goede velden een vinkje geven."
+    ],
+    "juist": 3
+  },
+  "kern": "Controleer een veld als de bezoeker ermee klaar is, haal de fout weg zodra het klopt en bevestig wat goed is.",
+  "afleiders": [
+    "**Vanaf de eerste toetsaanslag:** direct feedback klinkt behulpzaam. Maar dit is *voortijdige validatie*: je krijgt een fout terwijl je nog typt, en dat vonden deelnemers in Baymards tests irritant.",
+    "**Pas na Verstuur:** de melding staat dan wel bij het veld, maar het is geen inline validatie. De bezoeker ontdekt de fout pas aan het eind en moet alsnog terugzoeken.",
+    "**Fout laten staan tot opnieuw versturen:** dat lijkt rustiger. Maar wie zijn fout al heeft verbeterd, ziet nog steeds een melding en raakt in de war.",
+    ""
+  ],
+  "kort": "Denk aan iemand die over je schouder meeleest terwijl je een formulier invult. Roept hij bij elke letter 'fout!', dan word je gek. Kijkt hij pas als je klaar bent met een vakje, en knikt hij zodra het klopt, dan helpt hij je juist. Zo werkt een goed formulier ook: oordelen als iemand klaar is, en meteen laten zien wanneer het goed is.",
+  "begrippen": [
+    {
+      "term": "Inline validatie",
+      "uitleg": "het formulier controleert elk veld al tijdens het invullen en zet een melding direct bij dat veld."
+    },
+    {
+      "term": "Voortijdige validatie",
+      "uitleg": "een veld al afkeuren terwijl de bezoeker nog aan het typen is."
+    }
+  ],
+  "uitleg": "Volgens het benchmarkonderzoek van Baymard heeft **31%** van de onderzochte webshops geen inline validatie. Bezoekers ontdekken fouten daar pas na het versturen. Dan moeten ze zoeken welk veld het was en soms gegevens opnieuw invullen.\n\nDrie details uit Baymards onderzoek:\n- **Vaste lengte:** bij velden zoals een postcode of telefoonnummer mag je controleren zodra die lengte bereikt is.\n- **Fout weg bij de toetsaanslag die het goed maakt:** wachten tot het veld wordt verlaten, verwart mensen. Vooral bij velden die van elkaar afhangen, zoals 'herhaal wachtwoord'.\n- **Positieve validatie:** een vinkje of groene rand bij elk goed veld geeft een gevoel van voortgang.\n\nInline validatie vervangt de controle bij het versturen niet: mensen kunnen een formulier ook met fouten versturen. Zet de foutmelding dan bij het veld en zeg duidelijk wat er moet gebeuren.\n\nMeet het effect in Clarity of GA4: het aantal mislukte verzendpogingen en het percentage dat het formulier afrondt.",
+  "kernpunt": "Haken bezoekers af na 'Verstuur', kijk dan eerst wanneer het formulier zijn fouten laat zien.",
+  "toepassing": "Vul vandaag bij een klant met een lead- of checkoutformulier zelf een paar velden fout in. Noteer wanneer de foutmelding verschijnt en weer verdwijnt, en zet afwijkingen op de CRO-backlog.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Baymard Institute: Usability Testing of Inline Form Validation",
+    "url": "https://baymard.com/blog/inline-form-validation"
+  }
+}

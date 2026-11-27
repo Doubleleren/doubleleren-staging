@@ -1,0 +1,45 @@
+{
+  "id": "20261105-videositemap-verplichte-tags",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Videositemap: welke tags zijn verplicht",
+  "matrix": ["1.4.3", "2.2.2"],
+  "cel": "ecom",
+  "titel": "De videositemap is bijna af, zegt de developer. Klopt dat?",
+  "intro": "Een keukenmerk heeft 80 instructievideo's op zijn productpagina's, in een eigen videospeler. Een developer maakt een videositemap (een sitemap speciaal voor video's). Per video levert hij: de pagina-URL, een titel, een beschrijving, de duur in seconden en de publicatiedatum. Verder niets, 'want de rest staat al in de pagina'.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat moet er minimaal nog bij voordat de videositemap aan Googles eisen voldoet?",
+    "opties": [
+      "Alleen een thumbnail-URL, want met de duur en de publicatiedatum kan Google de video zelf al vinden en afspelen.",
+      "Niets meer, want Google haalt de thumbnail en het videobestand zelf uit de pagina zodra die in de sitemap staat.",
+      "Een thumbnail-URL plus een link naar het videobestand of naar de speler, want die horen bij de verplichte tags.",
+      "Een link naar het videobestand én een link naar de speler, want Google wil beide hebben om de video te tonen."
+    ],
+    "juist": 2
+  },
+  "kern": "Google eist per video een titel, beschrijving, thumbnail en een link naar bestand of speler. De developer leverde vooral velden die optioneel zijn.",
+  "afleiders": [
+    "**Alleen een thumbnail:** de thumbnail ontbreekt inderdaad. Maar ook de link naar het videobestand of de speler is verplicht, en duur of datum vervangen die niet.",
+    "**Niets meer:** dat de informatie al op de pagina staat, klinkt logisch. Maar een sitemap zonder de verplichte tags voldoet niet aan de eisen.",
+    "",
+    "**Beide links:** dat mag, maar het hoeft niet. Eén van de twee is genoeg."
+  ],
+  "kort": "Een videositemap is een soort tv-gids voor Google. Per programma moet erin staan hoe het heet, waar het over gaat, een plaatje en op welke zender je het kunt zien. Zonder zender weet niemand waar hij moet kijken, hoe mooi de beschrijving ook is. De duur en de datum zijn extra: handig, maar de gids werkt ook zonder.",
+  "begrippen": [
+    { "term": "Videositemap", "uitleg": "een lijst waarmee je Google per video vertelt waar hij staat en waar hij over gaat." },
+    { "term": "Thumbnail", "uitleg": "het kleine voorbeeldplaatje van een video." },
+    { "term": "content_loc", "uitleg": "de tag met de link naar het videobestand zelf, bijvoorbeeld een .mp4." },
+    { "term": "player_loc", "uitleg": "de tag met de link naar de videospeler, zoals een embed-URL." }
+  ],
+  "uitleg": "De verplichte tags per video zijn video:thumbnail_loc, video:title, video:description en video:content_loc **of** video:player_loc. De duur (video:duration) en de publicatiedatum zijn optioneel.\n\nEen videositemap helpt vooral als Google je video's moeilijk zelf vindt. Bijvoorbeeld omdat ze in een eigen speler zitten of pas laden met JavaScript.\n\nEen paar dingen om op te letten:\n- **Thumbnail:** Google moet het plaatje kunnen ophalen. Blokkeer de map met thumbnails dus niet in robots.txt.\n- **Geen pagina-URL:** zet bij content_loc of player_loc niet de URL van de pagina zelf neer.\n- **Optioneel maar nuttig:** duur, publicatiedatum en een verloopdatum voor video's die offline gaan.\n- **Combineren mag:** de video-tags mogen in je gewone sitemap staan, of in een aparte videositemap.\n\nVideo-markup (VideoObject) op de pagina zelf is een aanvulling. Daarmee geef je Google dezelfde informatie, en meer, zoals hoofdstukken in een video.",
+  "kernpunt": "Zitten video's in een eigen speler, controleer dan eerst of elke video in de sitemap een thumbnail en een link naar bestand of speler heeft.",
+  "toepassing": "Heeft een klant eigen video's? Open vandaag zijn videositemap en controleer bij drie video's of er een thumbnail_loc en een content_loc of player_loc in staat.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Video sitemaps | Google Search Central",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps"
+  }
+}

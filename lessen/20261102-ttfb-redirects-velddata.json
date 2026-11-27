@@ -1,0 +1,50 @@
+{
+  "id": "20261102-ttfb-redirects-velddata",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO",
+  "onderwerp": "TTFB: waarom velddata slechter zijn dan het lab bij redirects",
+  "matrix": ["5.2.10", "5.2.11"],
+  "cel": "ecom",
+  "titel": "Lighthouse zegt 'snelle server', de velddata zeggen TTFB 1,9 seconde",
+  "intro": "Een webshop krijgt de helft van zijn bezoekers via advertenties en nieuwsbrieven. In PageSpeed Insights geeft Lighthouse de homepage een snelle serverrespons, maar de velddata tonen een TTFB van 1,9 seconde. De links in advertenties en nieuwsbrieven gaan eerst via een klikteller, daarna van http naar https en van het domein zonder www naar www.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de meest waarschijnlijke verklaring voor het verschil, en wat doe je eerst?",
+    "opties": [
+      "De velddata zijn vertekend door trage mobiele netwerken. Baseer je advies op Lighthouse, dat onder vaste omstandigheden meet.",
+      "De server is te zwak voor de drukte van echte bezoekers. Verhuis naar zwaardere hosting met meer geheugen en meet opnieuw.",
+      "In het veld tellen de redirects mee in de TTFB, in het lab niet. Geef adverteerders de eind-URL en schrap eigen redirects.",
+      "CrUX meet vooral bezoeken met een lege cache. Laat een script elke nacht de cache vullen, zodat de eerste bezoeker niet wacht."
+    ],
+    "juist": 2
+  },
+  "kern": "Echte bezoekers worden onderweg doorgestuurd, een test niet.",
+  "afleiders": [
+    "**Velddata negeren:** velddata is wat echte bezoekers meemaken. Dat is juist de waarheid, ook als het lab mooiere cijfers geeft.",
+    "**Zwaardere hosting:** de server is in het lab al snel. Een snellere server haalt geen enkele doorverwijzing weg.",
+    "",
+    "**Lege cache:** dat verklaart niet zo'n groot verschil, en CrUX meet geen apart 'eerste bezoek van de dag'."
+  ],
+  "kort": "Je belt een bedrijf en wordt twee keer doorverbonden voordat je de juiste persoon spreekt. Die wachttijd voel jij als beller, ook al neemt die laatste persoon razendsnel op. Zo gaat het ook met een bezoeker uit een advertentie of nieuwsbrief: eerst langs de klikteller, dan van http naar https, dan naar www. Pas daarna komt de pagina, en al die stappen tellen mee in de TTFB. Een test als Lighthouse belt direct het juiste toestel en ziet dus alleen een snelle server.",
+  "begrippen": [
+    { "term": "TTFB", "uitleg": "Time to First Byte: de tijd tot het eerste stukje van de pagina binnenkomt." },
+    { "term": "Labdata", "uitleg": "een test die je zelf draait, zoals Lighthouse of de score in PageSpeed Insights." },
+    { "term": "Velddata", "uitleg": "metingen bij echte Chrome-bezoekers (CrUX), het deel bovenaan PageSpeed Insights." },
+    { "term": "Redirect", "uitleg": "een automatische doorverwijzing naar een ander adres." }
+  ],
+  "uitleg": "Volgens web.dev is TTFB de som van: redirecttijd, opstarten van een service worker, DNS-lookup, verbinding en TLS, en het verzoek tot de eerste byte. Goed is **0,8 seconde of minder**, slecht is **meer dan 1,8 seconde**. TTFB is geen Core Web Vital, maar een trage TTFB vertraagt alles daarna, zoals FCP en LCP.\n\nLabtools meten meestal direct de eind-URL; de Lighthouse-audit voor serverrespons laat redirects en DNS zelfs helemaal weg. web.dev noemt sites met veel bezoekers uit advertenties en nieuwsbrieven daarom expliciet als risicogroep.\n\nZo pak je het aan:\n- **Eigen redirects schrappen** (same-origin): link en adverteer direct naar https://www.… Daar heb je volledige controle over.\n- **De eind-URL aan adverteerders en de nieuwsbrieftool geven.** Een klikteller van een ander domein (cross-origin) kun je vaak niet weghalen, maar je kunt voorkomen dat er daarna nog redirects volgen.\n- **HSTS instellen**, zodat browsers bij een volgend bezoek meteen naar https gaan; met HSTS-preload ook bij het eerste bezoek.",
+  "kernpunt": "Wijkt velddata af van labdata, kijk dan eerst wat de echte bezoeker onderweg tegenkomt.",
+  "toepassing": "Klik bij een klant op een link uit de laatste nieuwsbrief en tel met een redirectchecker hoeveel stappen er zijn voordat je op de pagina bent.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Optimize Time to First Byte | web.dev",
+    "url": "https://web.dev/articles/optimize-ttfb"
+  },
+  "video": {
+    "titel": "Core Web Vitals Explained: How To Fix Site Optimization Issues",
+    "kanaal": "Matt Diggity",
+    "url": "https://www.youtube.com/watch?v=_FpAvQkjlco"
+  }
+}

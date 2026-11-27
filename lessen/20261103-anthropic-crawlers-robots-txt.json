@@ -1,0 +1,47 @@
+{
+  "id": "20261103-anthropic-crawlers-robots-txt",
+  "type": "basis",
+  "niveau": "gevorderd",
+  "vakgebied": "SEO / AI-search",
+  "onderwerp": "AI-crawlers van Anthropic: ClaudeBot, Claude-SearchBot en Claude-User",
+  "matrix": [
+    "12.1.6",
+    "12.1.3"
+  ],
+  "cel": "alle",
+  "titel": "Niet in de training van Claude, wél te vinden in Claude: kan dat?",
+  "intro": "Een uitgever van vakartikelen wil niet dat zijn teksten worden gebruikt om de AI-modellen van Anthropic te trainen. Wel wil hij dat Claude zijn artikelen kan vinden en openen als iemand er in een chat naar vraagt. De developer stelt voor om alles met 'Claude' in de user-agent te blokkeren.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Welke aanpak past bij de wens van de uitgever?",
+    "opties": [
+      "Alles met Claude in de naam blokkeren, want Anthropic gebruikt één crawler voor training, zoeken en het ophalen van pagina's.",
+      "Niets in robots.txt zetten maar de IP-adressen van Anthropic blokkeren, want robots.txt wordt door AI-crawlers genegeerd.",
+      "Claude-User blokkeren en ClaudeBot toelaten, want Claude-User verzamelt de teksten die later in de training belanden.",
+      "Alleen ClaudeBot blokkeren en Claude-SearchBot en Claude-User toelaten, want die halen content op voor zoeken en vragen."
+    ],
+    "juist": 3
+  },
+  "kern": "Anthropic heeft een aparte bot voor training. Die blokkeer je, en de bots voor zoeken en ophalen laat je gewoon toe.",
+  "afleiders": [
+    "**Alles met Claude blokkeren:** alles dichtzetten lijkt veilig. Maar Anthropic gebruikt drie aparte bots, dus dan verdwijn je ook uit zoeken en ophalen in Claude.",
+    "**IP-adressen blokkeren:** dat voelt steviger dan een tekstbestand. Maar de bots volgen robots.txt wel, en Anthropic raadt IP-blokkades juist af: dan kan de bot je robots.txt niet meer lezen.",
+    "**Claude-User blokkeren:** de namen lijken op elkaar. Maar Claude-User haalt alleen pagina's op als een gebruiker erom vraagt, en ClaudeBot is de trainingsbot. Deze optie draait het dus om.",
+    ""
+  ],
+  "kort": "Denk aan een bibliotheek met drie soorten bezoekers. De een kopieert boeken voor een eigen archief, de ander houdt de catalogus bij en de derde leent een boek voor een lezer. Je kunt de kopieerder weigeren en de andere twee gewoon binnenlaten. Anthropic, de maker van Claude, werkt ook met drie aparte bots. Omdat elke bot een eigen naam heeft, kun je in robots.txt alleen de trainingsbot weigeren.",
+  "begrippen": [
+    { "term": "robots.txt", "uitleg": "een tekstbestand op je site waarin je bots vertelt welke delen ze niet mogen bezoeken." },
+    { "term": "User-agent", "uitleg": "de naam waarmee een bot zich bij je server meldt, zoals ClaudeBot." },
+    { "term": "Crawler", "uitleg": "een programma dat automatisch webpagina's bezoekt en ophaalt. Ook wel bot genoemd." }
+  ],
+  "uitleg": "Net als OpenAI en Google werkt Anthropic met **aparte user-agents per doel**. Volgens het helpcentrum van Anthropic:\n\n- **ClaudeBot** verzamelt openbare webcontent die gebruikt kan worden om de modellen te trainen. Blokkeer je hem, dan geldt dat als signaal om je toekomstige content uit de trainingsdata te houden.\n- **Claude-User** haalt pagina's op als een gebruiker Claude iets vraagt waarvoor webcontent nodig is. Blokkeer je hem, dan kan Claude je pagina niet openen op verzoek van een gebruiker.\n- **Claude-SearchBot** crawlt om de relevantie en nauwkeurigheid van zoekresultaten te verbeteren. Blokkeer je hem, dan wordt je content daarvoor niet geïndexeerd en ben je minder zichtbaar in zoekresultaten binnen Claude.\n\nDe bots ondersteunen ook **Crawl-delay**, een niet-standaard regel om de crawlfrequentie te beperken.\n\nVoor de uitgever is dit genoeg:\n\nUser-agent: ClaudeBot\nDisallow: /\n\nDe andere bots vallen onder de gewone regels voor alle user-agents. Controleer in je serverlogs of ze daarna nog langskomen, en kijk zo ook of de blokkade van ClaudeBot werkt.",
+  "kernpunt": "Wil een klant iets uitsluiten bij een AI-bedrijf, zoek dan eerst op welke bot welk doel heeft en blokkeer alleen die bot.",
+  "toepassing": "Open vandaag de robots.txt van een uitgever of contentklant. Check per AI-bot of de regel past bij wat de klant wil: training, zoeken en ophalen apart.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Does Anthropic crawl data from the web, and how can site owners block the crawler? | Claude Help Center",
+    "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "20261106-orphan-pages-alleen-in-sitemap",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "Orphan pages: pagina's die wel in de sitemap staan, maar niet in de crawl",
+  "matrix": ["1.2.1", "1.2.6"],
+  "cel": "alle",
+  "titel": "120 cursussen in de sitemap, 85 in de crawl: waar zijn de rest?",
+  "intro": "Een opleidingsinstituut heeft 120 cursuspagina's in de XML-sitemap. Een crawl met Screaming Frog, gestart op de homepage, vindt er maar 85. De andere 35 geven gewoon een 200 (de pagina werkt) en krijgen ook vertoningen in Search Console.",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is de meest waarschijnlijke verklaring voor de 35 ontbrekende pagina's?",
+    "opties": [
+      "Ze staan op noindex, want een crawler slaat pagina's met noindex over en zet ze daarom niet in de lijst.",
+      "Ze laden te traag, want een crawler stopt bij pagina's die er langer dan een paar seconden over doen.",
+      "Er linkt geen enkele pagina naar ze, want een crawler vindt pagina's alleen via links vanaf de start.",
+      "Ze staan geblokkeerd in robots.txt, want een crawler mag ze dan niet openen en laat ze helemaal weg."
+    ],
+    "juist": 2
+  },
+  "kern": "Een crawler begint op de homepage en volgt alleen links. Waar geen link naartoe gaat, komt hij nooit, terwijl Google die pagina's wel via de sitemap kent.",
+  "afleiders": [
+    "**noindex:** dat klinkt alsof de crawler de pagina overslaat. Maar noindex houdt een crawler niet tegen: Screaming Frog crawlt zulke pagina's gewoon en meldt ze als niet-indexeerbaar.",
+    "**Te traag:** trage pagina's kunnen een crawl hinderen. Maar deze pagina's werken en Google laat ze zien, dus dat is hier niet logisch.",
+    "",
+    "**robots.txt:** een blokkade lijkt pagina's onzichtbaar te maken. Maar wordt een geblokkeerde pagina gelinkt, dan toont Screaming Frog hem gewoon als 'Blocked by robots.txt'."
+  ],
+  "kort": "Stel je een museum voor met een zaal waar geen enkele gang naartoe loopt. Een bezoeker die van zaal naar zaal wandelt, komt er nooit. Alleen wie de plattegrond bij de kassa leest, weet dat de zaal bestaat. Zo vindt Google deze cursussen via de sitemap, terwijl een crawler en je bezoekers ze via de links nooit tegenkomen.",
+  "begrippen": [
+    { "term": "Crawler", "uitleg": "een programma dat een site afloopt door links te volgen, zoals Googlebot of Screaming Frog." },
+    { "term": "Orphan page", "uitleg": "een pagina waar geen enkele interne link naartoe gaat (verweesde pagina)." },
+    { "term": "XML-sitemap", "uitleg": "een lijst met URL's van je site, speciaal voor zoekmachines." },
+    { "term": "Interne link", "uitleg": "een link van de ene pagina van je site naar een andere pagina van dezelfde site." }
+  ],
+  "uitleg": "**Zo vind je orphan pages in Screaming Frog:**\n\n- Geef bij de crawl de XML-sitemap op en koppel Google Analytics en Search Console.\n- Draai na de crawl de **Crawl Analysis**. Pas dan weet de tool welke URL's wel in de sitemap of in GA en GSC staan, maar niet in de crawl.\n- Bekijk het rapport **Orphan Pages**. Daar staat per URL uit welke bron hij komt.\n\n**Wat doe je ermee?**\n\n- Waardevolle pagina's, zoals deze cursussen, krijg je terug met interne links: vanuit een overzichtspagina, een categorie of verwante cursussen.\n- Oude pagina's die niets meer toevoegen, stuur je door met een 301 naar een passende pagina of haal je weg.\n\nOrphan pages ontstaan vaak na een migratie of een nieuw menu: de pagina's bestaan nog, maar de links ernaartoe zijn verdwenen.",
+  "kernpunt": "Vindt een crawl minder pagina's dan de sitemap, leg dan eerst beide lijsten naast elkaar en geef waardevolle ontbrekende pagina's weer een interne link.",
+  "toepassing": "Kies vandaag een kleine klantsite, crawl hem in Screaming Frog met de sitemap erbij en draai de Crawl Analysis. Noteer de vijf belangrijkste pagina's uit het rapport Orphan Pages.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "How To Find Orphan Pages | Screaming Frog",
+    "url": "https://www.screamingfrog.co.uk/seo-spider/tutorials/find-orphan-pages/"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "20261103-ai-productteksten-op-schaal",
+  "type": "basis",
+  "niveau": "basis",
+  "vakgebied": "SEO",
+  "onderwerp": "AI-gegenereerde content: Googles standpunt en scaled content abuse",
+  "matrix": [
+    "2.1.7",
+    "2.1.5"
+  ],
+  "cel": "ecom",
+  "titel": "6.000 productteksten in één weekend met AI: goed plan?",
+  "intro": "Een webshop in badkamerartikelen heeft 6.000 producten met alleen de tekst van de leverancier. De marketeer wil met AI in één weekend voor alle producten een nieuwe beschrijving maken en die direct publiceren. 'Google straft AI-tekst toch niet meer?'",
+  "opdracht": {
+    "soort": "meerkeuze",
+    "vraag": "Wat is je advies aan de marketeer?",
+    "opties": [
+      "Niet doen: Google herkent AI-tekst en zet pagina's met gegenereerde content standaard lager, ook als de tekst klopt.",
+      "AI mag, maar alleen als het waarde toevoegt: laat het op echte productdata leunen en controleer feiten vóór publicatie.",
+      "Prima, mits je onder elke tekst vermeldt dat hij met AI is gemaakt; dat label is voor Google de voorwaarde om te ranken.",
+      "Doen, en liefst nog meer varianten per product: hoe meer unieke tekst op de site, hoe beter Google de webshop beoordeelt."
+    ],
+    "juist": 1
+  },
+  "kern": "Google kijkt naar de kwaliteit van een tekst, niet naar wie of wat hem schreef. Het risico is massa zonder waarde en zonder controle.",
+  "afleiders": [
+    "**Google straft AI-tekst:** dat was lang de angst. Maar Google zet AI-tekst niet automatisch lager: het gaat om de kwaliteit, niet om hoe de tekst gemaakt is.",
+    "",
+    "**AI-label als voorwaarde:** vertellen hoe content is gemaakt kan lezers helpen. Maar het is geen voorwaarde om te ranken.",
+    "**Meer varianten:** meer unieke tekst klinkt als meer kans. Maar massa zonder waarde is juist wat Google scaled content abuse noemt."
+  ],
+  "kort": "Een bakker die duizend broden per uur bakt, krijgt geen klachten over zijn machine. Wel als de broden niet te eten zijn. Zo kijkt Google ook naar tekst van AI: de lezer moet er iets aan hebben en de feiten moeten kloppen. Duizenden teksten publiceren zonder te proeven is de oven aanzetten en weglopen. Daarom laat je de AI werken met echte productgegevens en lees je mee voordat je publiceert.",
+  "begrippen": [
+    { "term": "Scaled content abuse", "uitleg": "Googles naam voor spam waarbij heel veel pagina's worden gemaakt die de lezer niets opleveren." }
+  ],
+  "uitleg": "Wat Google Search Central zegt over generatieve AI:\n- Je content moet voldoen aan de **Search Essentials** en het **spambeleid**.\n- Met AI of vergelijkbare tools veel pagina's maken **zonder waarde voor gebruikers** kan in strijd zijn met het beleid tegen scaled content abuse.\n- Richt je op **juistheid, kwaliteit en relevantie**, en controleer alle AI-content zelf voordat je hem publiceert.\n- Die controle geldt ook voor **metadata**: title, meta description, structured data en alt-teksten. Ook die kunnen in de zoekresultaten verschijnen.\n\nVoor webshops met **Merchant Center** gelden extra regels. AI-afbeeldingen moeten IPTC-metadata bevatten (DigitalSourceType: TrainedAlgorithmicMedia). Door AI gemaakte titels en beschrijvingen in de productfeed moeten apart worden opgegeven en als AI-gegenereerd worden gemarkeerd.\n\nEen verstandig plan voor deze webshop: begin met de best verkopende producten. Laat de AI werken vanuit echte specificaties (maten, materiaal, montage). Controleer steekproefsgewijs op fouten en meet het effect voordat je opschaalt.",
+  "kernpunt": "Wil een klant met AI opschalen, begin dan klein, met echte productdata en een vaste feitencheck vóór publicatie.",
+  "toepassing": "Vraag vandaag één klant die met AI teksten maakt wie de feiten checkt vóór publicatie. Leg het antwoord in één alinea vast.",
+  "herzien": "2026-11-06",
+  "wijziging": "Uitleg in de vaste opbouw gezet.",
+  "bron": {
+    "titel": "Google Search's guidance on using generative AI content on your website | Google Search Central",
+    "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content"
+  }
+}
